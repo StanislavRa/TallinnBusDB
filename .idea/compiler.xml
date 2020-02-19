@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="2020-02-18 Database in github" />
         <module name="TallinnBusDB" />
       </profile>
     </annotationProcessing>
