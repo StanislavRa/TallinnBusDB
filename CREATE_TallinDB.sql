@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS DCdmjMhpyO;
-		CREATE DATABASE DCdmjMhpyO;
-                    USE	DCdmjMhpyO;
+DROP DATABASE IF EXISTS rWRRgkd7lg;
+		CREATE DATABASE rWRRgkd7lg;
+                    USE	rWRRgkd7lg;
 
 CREATE TABLE drivers (
 	id 			INT 		AUTO_INCREMENT,
@@ -57,8 +57,6 @@ CREATE TABLE timetable (
 	FOREIGN KEY (locationId)    REFERENCES locations (id),
 	FOREIGN KEY (busId)     	REFERENCES buses (id)
 );
-
-
 
 ALTER TABLE buses 
   ADD CONSTRAINT FK_DriversBuses FOREIGN KEY (driverId) REFERENCES drivers(id) 

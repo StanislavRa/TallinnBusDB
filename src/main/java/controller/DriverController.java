@@ -21,9 +21,10 @@ public class DriverController {
 				float myDriverHeight = resultSetDrivers.getFloat("height");
 				System.out.println(myDriverId + " " + myDriverName + " " + myDriverAge + " " + myDriverHeight);
 			}
+			databaseHandler.closeConnection();
 			statement.close();
 		} catch (SQLException ex) {
-				System.out.println(ex);
+				ex.printStackTrace();
 			}
 	}
 
