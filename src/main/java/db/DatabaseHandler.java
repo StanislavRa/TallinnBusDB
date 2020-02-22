@@ -9,10 +9,10 @@ public class DatabaseHandler {
 	String url = 	"jdbc:mysql:" +         // Database type
 					"//remotemysql.com" +   // Host
 					":3306/" +              // Port
-					"DCdmjMhpyO" +          // Database name
+					"rWRRgkd7lg" +          // Database name
 					"?serverTimezone=UTC";  // Timezone
-	String user = 	"DCdmjMhpyO";
-	String pass = 	"9GcyPpFVKz";
+	String user = 	"rWRRgkd7lg";
+	String pass = 	"U0UirVF1pu";
 
 	Connection dbConnection;
 	Statement statement;
