@@ -34,6 +34,10 @@ public class Domain {
 								2,
 								3);
 		passengersController.listAllPassengers();
+
+		System.out.println("=========================================");
+		System.out.println("Passenger with id #3 information:");
+		passengersController.findByPassengerID(3);
 		/*
 		@Oleks
 		 */
