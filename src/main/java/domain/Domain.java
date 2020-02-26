@@ -1,19 +1,25 @@
 package domain;
 
 import controller.BusController;
-import controller.DriverController;
 
 public class Domain {
 
 	public static void main(String[] args) {
 
-		DriverController driverController = new DriverController();
+		// Buses operations
 		BusController busController = new BusController();
-
-		driverController.listAllDrivers();
 		busController.listAllBuses();
-		System.out.println("Let's add new Driver");
-		driverController.create("Ivanka Trump", "Tall building", "+1002555",25,174);
-		driverController.listAllDrivers();
+		System.out.println("*****************************************************************************************");
+		busController.findBusByNumber("16A");
+		System.out.println("*****************************************************************************************");
+		busController.create("125",2,5.5f, "13-05-1988");
+		System.out.println("*****************************************************************************************");
+
+		// Drivers operations
+
+		// Passengers operations
+
+		// Location operations
+
 	}
 }
