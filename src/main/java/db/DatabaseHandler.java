@@ -17,6 +17,10 @@ public class DatabaseHandler {
 	Connection dbConnection;
 	Statement statement;
 
+	public Connection getDbConnection() {
+		return dbConnection;
+	}
+
 	public Statement createStatement() {
 		try {
 			dbConnection = DriverManager.getConnection(url, user, pass);
