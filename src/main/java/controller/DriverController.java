@@ -44,12 +44,12 @@ public class DriverController {
 		}
 	}
 
-	public void findDriverByBusNumber(int busNumber) {
+	public void findDriverByBusNumber(String busNumber) {
 		Statement statement = databaseHandler.createStatement();
 		try {
 			String findDriver = "\tSELECT fullName FROM drivers\n" +
 					"\tINNER JOIN buses on buses.driverId = drivers.id\n" +
-					"\tWHERE buses.busNumber = " + busNumber;
+					"\tWHERE buses.busNumber = \"" + busNumber + "\"";
 			ResultSet driverName = statement.executeQuery(findDriver);
 			if (driverName != null){
 				String myDriverName = driverName.getString("fullName");
