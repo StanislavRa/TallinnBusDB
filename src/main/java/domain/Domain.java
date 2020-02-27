@@ -13,14 +13,17 @@ public class Domain {
 		TimetableController timetableController = new TimetableController();
 
 		//driverController.listAllDrivers();
-		busController.listAllBuses();
+		//busController.listAllBuses();
 
 		System.out.println("Let's add a new Driver");
-		driverController.createDriver("Ivanka Trump", "Tall building", "+1002555",25,174);
-		driverController.listAllDrivers();
+		//driverController.createDriver("Ivanka Trump", "Tall building", "+1002555",25,174);
+		//driverController.listAllDrivers();
+		driverController.findDriverByBusNumber(23);
 
 		System.out.println("Let's add a new Location");
-		timetableController.createTimetable(1,"Monday", "07:25:00");
+		timetableController.createTimetable(1, 1, "Monday", "07:25:00");
 		timetableController.listAllTimetables();
+
+		timetableController.findTimetableForBusNumber(23);
 	}
 }

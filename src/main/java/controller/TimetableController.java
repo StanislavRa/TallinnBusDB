@@ -17,12 +17,14 @@ public class TimetableController {
 
             while (results.next()) {
                 int myTimetableId = results.getInt("id");
-                int myTimetableBusId = results.getInt("busId");
-                int myTimetableLocationId = results.getInt("locationId");
                 String myTimetableWeekDay = results.getString("weekday");
                 String myTimetableArrivalTime = results.getString("arrivalTime");
+                int myTimetableLocationId = results.getInt("locationId");
+                int myTimetableBusId = results.getInt("busId");
+                String myTimetableCreationDate = results.getString("createdOn");
 
-                System.out.println(myTimetableId+" "+myTimetableBusId+" "+myTimetableLocationId+" "+myTimetableWeekDay+" "+myTimetableArrivalTime);
+                System.out.println(myTimetableId+" "+myTimetableWeekDay+" "+myTimetableArrivalTime+" "+
+                        myTimetableBusId+" "+myTimetableLocationId+" "+myTimetableCreationDate);
 
             }
             statement.close();
@@ -37,8 +39,8 @@ public class TimetableController {
         Statement statement = databaseHandler.createStatement();
 
         try {
-            String newTimetable = "INSERT INTO timetable (locationId, weekDay, arrivalTime) VALUES ("
-                    + busId + "," + locationId + "," + "\"" + weekDay + "\"," + "\"" + arrivalTime + "\")";
+            String newTimetable = "INSERT INTO timetable (weekDay, arrivalTime, locationId, busId) VALUES ("
+                    + "\"" + weekDay + "\"," + "\"" + arrivalTime + "\"," + locationId + "," + busId + ")";
 
             statement.executeUpdate(newTimetable);
 
@@ -54,13 +56,19 @@ public class TimetableController {
         Statement statement = databaseHandler.createStatement();
         try {
             String findTimetable = "\tSELECT * FROM timetable\n" +
-                    "\tINNER JOIN buses on buses.driverId = drivers.id\n" +
+                    "\tINNER JOIN buses on buses.id = timetable.busId\n" +
                     "\tWHERE buses.busNumber = " + busNumber;
             ResultSet busTimetable = statement.executeQuery(findTimetable);
+            while (busTimetable.next()){
+                String myBusWeekDay = busTimetable.getString("weekday");
+                String myBusArrivalTime = busTimetable.getString("arrivalTime");
+                int myBusLocationId = busTimetable.getInt("locationId");
             if (busTimetable != null){
-                System.out.println("Here is timetable for bus number " + busNumber);
+                System.out.println("Here is timetable for bus number " + busNumber
+                        + ": weekday - " + myBusWeekDay + ", arrival time - " + myBusArrivalTime
+                        + " location - " + myBusLocationId);
             } else
-                System.out.println("Bus or timetable does not exist");
+                System.out.println("Bus or timetable does not exist");}
 
             statement.close();
             databaseHandler.closeConnection();

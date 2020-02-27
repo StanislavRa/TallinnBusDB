@@ -52,7 +52,8 @@ public class DriverController {
 					"\tWHERE buses.busNumber = " + busNumber;
 			ResultSet driverName = statement.executeQuery(findDriver);
 			if (driverName != null){
-				System.out.println("Driver " + driverName + " rides bus number " + busNumber);
+				String myDriverName = driverName.getString("fullName");
+				System.out.println("Driver " + myDriverName + " rides bus number " + busNumber);
 			} else
 				System.out.println("Bus or driver does not exist");
 
