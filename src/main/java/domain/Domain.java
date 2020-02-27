@@ -16,8 +16,5 @@ public class Domain {
 		busController.listAllBuses();
 		locationController.listAllLocations();
 		locationController.findByLocationID(5); // try to input ID that does not exist in table (10)
-//		System.out.println("Let's add new Driver");
-//		driverController.create("Ivanka Trump", "Tall building", "+1002555",25,174);
-//		driverController.listAllDrivers();
 	}
 }
