@@ -11,6 +11,7 @@ public class DriverController {
 
 	public void listAllDrivers() {
 		Statement statement = databaseHandler.createStatement();
+
 		try {
 			ResultSet resultSetDrivers = statement.executeQuery("SELECT * FROM drivers");
 
@@ -27,17 +28,20 @@ public class DriverController {
 			}
 	}
 
-	public void create(String name, String address, String phone, int age, float height) {
+
+	public void createDriver (String name, String address, String phoneNr, int age, double height) {
 		Statement statement = databaseHandler.createStatement();
 
-		if (statement != null) {
-			try {
-				statement.executeUpdate("INSERT INTO drivers (fullName, address, phone, age, height) VALUES" +
-						"('" + name + "', '" + address + "', '" + phone + "', '" + age + "', '"+ height + "')");
-				statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		try {
+			String newDriver = "INSERT INTO drivers (name, address, phoneNr, age, height) VALUES (\""
+					+ name + "\"," + "\"" + address + "\"," + "\"" + phoneNr  + "\"," + age  + "," +  height + ")";
+			statement.executeUpdate(newDriver);
+
+			statement.close();
+			databaseHandler.closeConnection();
+
+		}catch (SQLException e) {
+			System.out.println(e);
 		}
 	}
 }
