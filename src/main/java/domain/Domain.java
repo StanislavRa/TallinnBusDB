@@ -2,6 +2,7 @@ package domain;
 
 import controller.BusController;
 import controller.DriverController;
+import controller.LocationController;
 
 public class Domain {
 
@@ -9,11 +10,13 @@ public class Domain {
 
 		DriverController driverController = new DriverController();
 		BusController busController = new BusController();
+		LocationController locationController = new LocationController();
 
 		driverController.listAllDrivers();
 		busController.listAllBuses();
-		System.out.println("Let's add new Driver");
-		driverController.create("Ivanka Trump", "Tall building", "+1002555",25,174);
-		driverController.listAllDrivers();
+		locationController.listAllLocations();
+//		System.out.println("Let's add new Driver");
+//		driverController.create("Ivanka Trump", "Tall building", "+1002555",25,174);
+//		driverController.listAllDrivers();
 	}
 }
