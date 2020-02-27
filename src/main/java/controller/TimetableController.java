@@ -63,7 +63,7 @@ public class TimetableController {
                 String myBusWeekDay = busTimetable.getString("weekday");
                 String myBusArrivalTime = busTimetable.getString("arrivalTime");
                 int myBusLocationId = busTimetable.getInt("locationId");
-            if (busTimetable != null){
+            if (busTimetable.next()){
                 System.out.println("Here is timetable for bus number " + busNumber
                         + ": weekday - " + myBusWeekDay + ", arrival time - " + myBusArrivalTime
                         + " location - " + myBusLocationId);

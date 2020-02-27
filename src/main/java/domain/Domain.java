@@ -15,9 +15,10 @@ public class Domain {
 		//driverController.listAllDrivers();
 		//busController.listAllBuses();
 
-		System.out.println("Let's add a new Driver");
+		//System.out.println("Let's add a new Driver");
 		//driverController.createDriver("Ivanka Trump", "Tall building", "+1002555",25,174);
 		//driverController.listAllDrivers();
+		driverController.findDriverByBusNumber("20B");
 		driverController.findDriverByBusNumber("20A");
 
 		System.out.println("Let's add a new Location");
