@@ -24,11 +24,14 @@ public class DriverController {
 
 				System.out.println(myDriverId + " " + myDriverName + " " + myDriverAge + " " + myDriverHeight);
 			}
+			databaseHandler.closeConnection();
 			statement.close();
 			databaseHandler.closeConnection();
 		} catch (SQLException ex) {
+
 				System.out.println(ex);
-		}
+				ex.printStackTrace();
+			}
 	}
 
 
