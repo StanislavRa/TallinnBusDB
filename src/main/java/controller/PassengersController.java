@@ -28,14 +28,14 @@ public class PassengersController extends DatabaseHandler {
                 Timestamp timestamp = resultSetPassengers.getTimestamp("createdOn");
 
                 System.out.println(myPassengerId
-                        + " " + myPassengerFullName
-                        + " " + myPassengerEmail
-                        + " " + myPassengerPhoneNumber
-                        + " " + myPassengerAge
-                        + " " + myPassengerStartLocationId
-                        + " " + myPassengerStopLocationId
-                        + " " + myPassengerBusID
-                        + " " + timestamp);
+                        + " - " + myPassengerFullName
+                        + " - " + myPassengerEmail
+                        + " - " + myPassengerPhoneNumber
+                        + " - " + myPassengerAge
+                        + " - " + myPassengerStartLocationId
+                        + " - " + myPassengerStopLocationId
+                        + " - " + myPassengerBusID
+                        + " - " + timestamp);
             }
             statement.close();
         } catch (SQLException ex) {
@@ -77,23 +77,15 @@ public class PassengersController extends DatabaseHandler {
         }
     }
 
-    /*
-    create method in all classes to find results from each table using available column name.
-    (Example: using bus number; we can find a bus in mysql database by creating method
-    findByBusNumber(String busNumber) that accepts a string
-     which is the bus number 20A, 42B,
-     etc our function will take that bus number
-     and search mysql database using jdbc for the bus and show the results.)
-     */
     public void findByPassengerID(int id) {
         Statement statement = databaseHandler.createStatement();
         try {
+
             ResultSet resultSetPassengers = statement.executeQuery("SELECT * FROM passengers WHERE id = " + id +";");
             System.out.println("=========================================");
-            System.out.println("Passenger by id # " + id + "information from 'passengers' table");
+            System.out.println("Passenger by id # " + id + " information from 'passengers' table");
 
-            while (resultSetPassengers.next()) {
-
+            if (resultSetPassengers.next()){
                 int myPassengerId = resultSetPassengers.getInt("id");
                 String myPassengerFullName = resultSetPassengers.getString("fullName");
                 String myPassengerEmail = resultSetPassengers.getString("email");
@@ -104,19 +96,22 @@ public class PassengersController extends DatabaseHandler {
                 int myPassengerBusID = resultSetPassengers.getInt("busId");
                 Timestamp timestamp = resultSetPassengers.getTimestamp("createdOn");
 
-                if (myPassengerId == id) {
                     System.out.println(myPassengerId
-                            + " " + myPassengerFullName
-                            + " " + myPassengerEmail
-                            + " " + myPassengerPhoneNumber
-                            + " " + myPassengerAge
-                            + " " + myPassengerStartLocationId
-                            + " " + myPassengerStopLocationId
-                            + " " + myPassengerBusID
-                            + " " + timestamp);
+                            + " - " + myPassengerFullName
+                            + " - " + myPassengerEmail
+                            + " - " + myPassengerPhoneNumber
+                            + " - " + myPassengerAge
+                            + " - " + myPassengerStartLocationId
+                            + " - " + myPassengerStopLocationId
+                            + " - " + myPassengerBusID
+                            + " - " + timestamp);
+
+                } else {
+                    System.out.println("ID value is out of the list");
                 }
-            }
             statement.close();
+            databaseHandler.closeConnection();
+
         } catch (SQLException e){
             e.printStackTrace();
         }
