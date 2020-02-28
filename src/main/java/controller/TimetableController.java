@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TimetableController {
-    DatabaseHandler databaseHandler = new DatabaseHandler();
+
 
     public void listAllTimetables() {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
         Statement statement = databaseHandler.createStatement();
 
         try {
@@ -28,6 +29,7 @@ public class TimetableController {
 
             }
             statement.close();
+            databaseHandler.closeConnection();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -36,6 +38,7 @@ public class TimetableController {
 
 
     public void createTimetable (int busId, int locationId, String weekDay, String arrivalTime) {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
         Statement statement = databaseHandler.createStatement();
 
         try {
@@ -53,22 +56,23 @@ public class TimetableController {
     }
 
     public void findTimetableForBusNumber(int busNumber) {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
         Statement statement = databaseHandler.createStatement();
         try {
             String findTimetable = "\tSELECT * FROM timetable\n" +
                     "\tINNER JOIN buses on buses.id = timetable.busId\n" +
                     "\tWHERE buses.busNumber = " + busNumber;
             ResultSet busTimetable = statement.executeQuery(findTimetable);
-            while (busTimetable.next()){
+            if (busTimetable.next()){
                 String myBusWeekDay = busTimetable.getString("weekday");
                 String myBusArrivalTime = busTimetable.getString("arrivalTime");
                 int myBusLocationId = busTimetable.getInt("locationId");
-            if (busTimetable.next()){
+
                 System.out.println("Here is timetable for bus number " + busNumber
                         + ": weekday - " + myBusWeekDay + ", arrival time - " + myBusArrivalTime
                         + " location - " + myBusLocationId);
             } else
-                System.out.println("Bus or timetable does not exist");}
+                System.out.println("Bus or timetable does not exist");
 
             statement.close();
             databaseHandler.closeConnection();

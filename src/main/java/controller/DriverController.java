@@ -10,9 +10,10 @@ public class DriverController {
 	DatabaseHandler databaseHandler = new DatabaseHandler();
 
 	public void listAllDrivers() {
-		Statement statement = databaseHandler.createStatement();
+
 
 		try {
+			Statement statement = databaseHandler.createStatement();
 			ResultSet resultSetDrivers = statement.executeQuery("SELECT * FROM drivers");
 
 			while (resultSetDrivers.next()) {
@@ -24,6 +25,7 @@ public class DriverController {
 				System.out.println(myDriverId + " " + myDriverName + " " + myDriverAge + " " + myDriverHeight);
 			}
 			statement.close();
+			databaseHandler.closeConnection();
 		} catch (SQLException ex) {
 				System.out.println(ex);
 		}
@@ -31,6 +33,7 @@ public class DriverController {
 
 
 	public void createDriver (String name, String address, String phoneNr, int age, double height) {
+		Statement statement = databaseHandler.createStatement();
 		Statement statement1 = databaseHandler.createStatement();
 
 		try {
@@ -39,12 +42,14 @@ public class DriverController {
 			statement1.executeUpdate(newDriver);
 
 			statement1.close();
+			databaseHandler.closeConnection();
 		}catch (SQLException e) {
 			System.out.println(e);
 		}
 	}
 
 	public void findDriverByBusNumber(String busNumber) {
+		Statement statement = databaseHandler.createStatement();
 		Statement statement2 = databaseHandler.createStatement();
 		try {
 			String findDriver = "\tSELECT drivers.fullName FROM drivers\n" +
