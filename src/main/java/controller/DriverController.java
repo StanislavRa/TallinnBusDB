@@ -35,13 +35,13 @@ public class DriverController {
 	}
 
 
-	public void createDriver (String name, String address, String phoneNr, int age, double height) {
+	public void createDriver (String fullName, String address, String phone, int age, double height) {
 		Statement statement = databaseHandler.createStatement();
 		Statement statement1 = databaseHandler.createStatement();
 
 		try {
-			String newDriver = "INSERT INTO drivers (name, address, phoneNr, age, height) VALUES (\""
-					+ name + "\"," + "\"" + address + "\"," + "\"" + phoneNr  + "\"," + age  + "," +  height + ")";
+			String newDriver = "INSERT INTO drivers (fullName, address, phone, age, height) VALUES (\""
+					+ fullName + "\"," + "\"" + address + "\"," + "\"" + phone  + "\"," + age  + "," +  height + ")";
 			statement1.executeUpdate(newDriver);
 
 			statement1.close();
