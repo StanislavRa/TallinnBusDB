@@ -2,6 +2,7 @@ package domain;
 
 import controller.BusController;
 import controller.DriverController;
+import controller.TimetableController;
 
 public class Domain {
 
@@ -9,11 +10,21 @@ public class Domain {
 
 		DriverController driverController = new DriverController();
 		BusController busController = new BusController();
+		TimetableController timetableController = new TimetableController();
 
-		driverController.listAllDrivers();
-		busController.listAllBuses();
-		System.out.println("Let's add new Driver");
-		driverController.create("Ivanka Trump", "Tall building", "+1002555",25,174);
-		driverController.listAllDrivers();
+		//driverController.listAllDrivers();
+		//busController.listAllBuses();
+
+		//System.out.println("Let's add a new Driver");
+		//driverController.createDriver("Ivanka Trump", "Tall building", "+1002555",25,174);
+		//driverController.listAllDrivers();
+		driverController.findDriverByBusNumber("20B");
+		driverController.findDriverByBusNumber("20A");
+
+		System.out.println("Let's add a new Location");
+		timetableController.createTimetable(1, 1, "Monday", "07:25:00");
+		timetableController.listAllTimetables();
+
+		timetableController.findTimetableForBusNumber(23);
 	}
 }
