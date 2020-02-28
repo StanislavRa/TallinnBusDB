@@ -25,6 +25,6 @@ public class Domain {
 		timetableController.createTimetable(1, 1, "Monday", "07:25:00");
 		timetableController.listAllTimetables();
 
-		timetableController.findTimetableForBusNumber(23);
+		timetableController.findTimetableForBusNumber("20A");
 	}
 }
