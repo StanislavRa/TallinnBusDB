@@ -55,13 +55,13 @@ public class TimetableController {
         }
     }
 
-    public void findTimetableForBusNumber(int busNumber) {
+    public void findTimetableForBusNumber(String busNumber) {
         DatabaseHandler databaseHandler = new DatabaseHandler();
         Statement statement = databaseHandler.createStatement();
         try {
             String findTimetable = "\tSELECT * FROM timetable\n" +
                     "\tINNER JOIN buses on buses.id = timetable.busId\n" +
-                    "\tWHERE buses.busNumber = " + busNumber;
+                    "\tWHERE buses.busNumber = \"" + busNumber + "\"";
             ResultSet busTimetable = statement.executeQuery(findTimetable);
             if (busTimetable.next()){
                 String myBusWeekDay = busTimetable.getString("weekday");
