@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS DCdmjMhpyO;
-		CREATE DATABASE DCdmjMhpyO;
-                    USE	DCdmjMhpyO;
+DROP DATABASE IF EXISTS rWRRgkd7lg;
+		CREATE DATABASE rWRRgkd7lg;
+                    USE	rWRRgkd7lg;
 
 CREATE TABLE drivers (
 	id 			INT 		AUTO_INCREMENT,
@@ -46,6 +46,18 @@ CREATE TABLE passengers (
 	FOREIGN KEY (stopLocationId)	REFERENCES locations (id)
 );
 
+CREATE TABLE timetable (
+	id			INT			AUTO_INCREMENT,
+	weekday 	VARCHAR(30) NOT NULL,
+	arrivalTime TIME        NOT NULL,
+	locationId  INT         NOT NULL,
+	busId       INT         NOT NULL,
+	createdOn	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+	FOREIGN KEY (locationId)    REFERENCES locations (id),
+	FOREIGN KEY (busId)     	REFERENCES buses (id)
+);
+
 ALTER TABLE buses 
   ADD CONSTRAINT FK_DriversBuses FOREIGN KEY (driverId) REFERENCES drivers(id) 
   ON DELETE CASCADE; 
@@ -83,3 +95,10 @@ INSERT INTO passengers
 			('Anatoly Karpov', 	'karpov@hotmail.com',	'+7560254',		65,	 4, 				5, 				2),
 			('Maria II', 		'maria@hotmail.com',	'+372457865',	45,	 2, 				6, 				3),
 			('Juri Ratas',		'ratas@hotmail.com', 	'+372457865',	45,	 5, 				6, 				3);
+
+INSERT INTO timetable
+			(busId,	locationId, weekday, 	arrivalTime)
+	 VALUES	(1,	    2,	        'Monday',   '08:00:00'),
+			(2, 	5,	        'Tuesday',	'10:00:00'),
+			(3, 	4,	        'Friday',	'13:00:00'),
+			(4,		3, 	        'Sunday',	'23:00:00');
