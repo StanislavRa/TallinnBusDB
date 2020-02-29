@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
-public class PassengersController extends DatabaseHandler {
+public class PassengersController  {
         DatabaseHandler databaseHandler = new DatabaseHandler();
 
     public void listAllPassengers() {
@@ -38,6 +38,7 @@ public class PassengersController extends DatabaseHandler {
                         + " - " + timestamp);
             }
             statement.close();
+            databaseHandler.closeConnection();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
