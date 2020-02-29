@@ -2,11 +2,13 @@ package domain;
 
 import controller.BusController;
 import controller.DriverController;
+import controller.PassengersController;
 import controller.TimetableController;
 
 public class Domain {
 
 	public static void main(String[] args) {
+
 
 		//DriverController driverController = new DriverController();
 		//BusController busController = new BusController();
@@ -27,5 +29,6 @@ public class Domain {
 
 		timetableController.findTimetableForBusNumber("20a");
 		timetableController.findTimetableForBusNumber("20b");
+
 	}
 }
