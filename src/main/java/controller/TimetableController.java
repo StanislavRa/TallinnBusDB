@@ -2,18 +2,16 @@ package controller;
 
 import db.DatabaseHandler;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TimetableController {
 
 
     public void listAllTimetables() {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        Statement statement = databaseHandler.createStatement();
 
         try {
+            Statement statement = databaseHandler.createStatement();
             ResultSet results = statement.executeQuery("SELECT * FROM timetable");
 
             while (results.next()) {
@@ -39,9 +37,9 @@ public class TimetableController {
 
     public void createTimetable (int busId, int locationId, String weekDay, String arrivalTime) {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        Statement statement = databaseHandler.createStatement();
 
         try {
+            Statement statement = databaseHandler.createStatement();
             String newTimetable = "INSERT INTO timetable (weekDay, arrivalTime, locationId, busId) VALUES ("
                     + "\"" + weekDay + "\"," + "\"" + arrivalTime + "\"," + locationId + "," + busId + ")";
 
@@ -57,8 +55,8 @@ public class TimetableController {
 
     public void findTimetableForBusNumber(String busNumber) {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        Statement statement = databaseHandler.createStatement();
         try {
+            Statement statement = databaseHandler.createStatement();
             String findTimetable = "\tSELECT * FROM timetable\n" +
                     "\tINNER JOIN buses on buses.id = timetable.busId\n" +
                     "\tWHERE buses.busNumber = \"" + busNumber + "\"";
@@ -80,6 +78,85 @@ public class TimetableController {
         }catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public void insertToTimetable(int busId, int locationId, String weekday, String arrivalTime) {
+
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        try {
+            Connection connector = databaseHandler.getDbConnection();
+            String INSERTDTimetableSQL = "INSERT INTO timetable (busId, locationId, weekday, arrivalTime)" +
+                    "VALUES (?, ?, ?, ?);";
+            PreparedStatement insertTimetable = connector.prepareStatement(INSERTDTimetableSQL);
+            insertTimetable.setInt(1, busId);
+            insertTimetable.setInt(2, locationId);
+            insertTimetable.setString(3, weekday);
+            insertTimetable.setString(4, arrivalTime);
+
+            int result = insertTimetable.executeUpdate();
+
+            if (result ==1) {
+                System.out.println("timetable added");
+            } else {
+                System.out.println("timetable not added");
+            }
+            databaseHandler.closeConnection();
+            connector.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateTimetable (int busId, int locationId, String weekday, String arrivalTime) {
+
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        try {
+            Connection connector = databaseHandler.getDbConnection();
+            String UPDATETimetableSQL = "UPDATE timetable SET locationId=?, weekday=?, arrivalTime=? WHERE busId=?";
+            PreparedStatement updateTimetable = connector.prepareStatement(UPDATETimetableSQL);
+            updateTimetable.setInt(1, locationId);
+            updateTimetable.setString(2, weekday);
+            updateTimetable.setString(3, arrivalTime);
+            updateTimetable.setInt(4, busId);
+
+            int result = updateTimetable.executeUpdate();
+
+            if (result ==1) {
+                System.out.println("timetable updated");
+            } else {
+                System.out.println("timetable not updated");
+            }
+            databaseHandler.closeConnection();
+            connector.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteTimetable(int id) {
+
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        try {
+            Connection connector = databaseHandler.getDbConnection();
+            String DELETETIMETABLESQL = "DELETE FROM timetable WHERE id=?";
+            PreparedStatement deleteTimetable = connector.prepareStatement(DELETETIMETABLESQL);
+            deleteTimetable.setInt(1, id);
+
+            int result = deleteTimetable.executeUpdate();
+
+            if (result ==1) {
+                System.out.println("timetable deleted");
+            } else {
+                System.out.println("timetable not deleted");
+            }
+            databaseHandler.closeConnection();
+            connector.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

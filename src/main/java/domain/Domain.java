@@ -15,15 +15,20 @@ public class Domain {
 		PassengersController passengersController = new PassengersController();
 		LocationController locationController = new LocationController();
 
-		driverController.listAllDrivers();
-		busController.listAllBuses();
-		passengersController.listAllPassengers();
+		timetableController.createTimetable(1, 1, "Sunday", "15:30:27");
 		timetableController.listAllTimetables();
-		locationController.listAllLocations();
-		driverController.findDriverByBusNumber("20B");
-		driverController.findDriverByBusNumber("20A");
-		timetableController.findTimetableForBusNumber("20A");
-		locationController.findByLocationID(5); // try input that does not exist in table: 10
+		timetableController.findTimetableForBusNumber("20a");
+		timetableController.findTimetableForBusNumber("30");
+
+//		driverController.listAllDrivers();
+//		busController.listAllBuses();
+//		passengersController.listAllPassengers();
+//		timetableController.listAllTimetables();
+//		locationController.listAllLocations();
+//		driverController.findDriverByBusNumber("20B");
+//		driverController.findDriverByBusNumber("20A");
+//		timetableController.findTimetableForBusNumber("20A");
+//		locationController.findByLocationID(5); // try input that does not exist in table: 10
 
 
 // 		System.out.println("Let's add new Driver");
