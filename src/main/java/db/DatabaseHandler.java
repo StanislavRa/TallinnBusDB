@@ -15,21 +15,20 @@ public class DatabaseHandler {
 	String pass = 	"U0UirVF1pu";
 
 	Connection dbConnection;
-	Statement statement;
 
-	public Connection getDbConnection() {
-		return dbConnection;
-	}
-
-	public Statement createStatement() {
+	public DatabaseHandler() {
 		try {
 			dbConnection = DriverManager.getConnection(url, user, pass);
-			statement = dbConnection.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return statement;
+
 	}
+
+	public Connection getConnection() {
+		return dbConnection;
+	}
+
 
 	public void closeConnection() {
 		try {

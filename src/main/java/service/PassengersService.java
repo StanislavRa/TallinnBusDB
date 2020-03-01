@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import db.DatabaseHandler;
@@ -117,3 +118,4 @@ public class PassengersController extends DatabaseHandler {
         }
     }
 }
+*/

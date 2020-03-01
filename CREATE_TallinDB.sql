@@ -60,7 +60,13 @@ CREATE TABLE timetable (
 
 ALTER TABLE buses 
   ADD CONSTRAINT FK_DriversBuses FOREIGN KEY (driverId) REFERENCES drivers(id) 
-  ON DELETE CASCADE; 
+  ON DELETE CASCADE;
+
+ALTER TABLE timetable
+  ADD CONSTRAINT FK_TimetableBuses FOREIGN KEY (busId) REFERENCES buses(id)
+  ON DELETE CASCADE;
+
+
 
 INSERT INTO drivers
 			(fullName,				address,		phone,			age, 	height)

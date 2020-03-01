@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import db.DatabaseHandler;
@@ -83,3 +84,4 @@ public class TimetableController {
     }
 
 }
+*/
