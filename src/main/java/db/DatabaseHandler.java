@@ -17,9 +17,19 @@ public class DatabaseHandler {
 	Connection dbConnection;
 	Statement statement;
 
-	public Statement createStatement() {
+	public DatabaseHandler() {
 		try {
 			dbConnection = DriverManager.getConnection(url, user, pass);
+		}catch (SQLException ex){
+			System.out.println(ex);}
+	}
+
+	public Connection getDbConnection() {
+		return dbConnection;
+	}
+
+	public Statement createStatement() {
+		try {
 			statement = dbConnection.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
