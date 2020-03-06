@@ -19,7 +19,8 @@ public class Driver {
         this.height = height;
     }
 
-    public Driver() {}
+    public Driver() {
+    }
 
     public int getId() {
         return id;

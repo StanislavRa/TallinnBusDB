@@ -3,38 +3,38 @@ package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DatabaseHandler {
-	String url = 	"jdbc:mysql:" +         // Database type
-					"//remotemysql.com" +   // Host
-					":3306/" +              // Port
-					"rWRRgkd7lg" +          // Database name
-					"?serverTimezone=UTC";  // Timezone
-	String user = 	"rWRRgkd7lg";
-	String pass = 	"U0UirVF1pu";
 
-	Connection dbConnection;
+    private static final String url = "jdbc:mysql:" +    // Database type
+            "//localhost" +         // Host
+            ":3306/" +              // Port
+            "tallinnbusdb" +        // Database name
+            "?serverTimezone=UTC";  // Timezone
+    private static final String user = "root";
+    private static final String pass = "Rs15021988)";
 
-	public DatabaseHandler() {
-		try {
-			dbConnection = DriverManager.getConnection(url, user, pass);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    Connection dbConnection;
 
-	}
+    public DatabaseHandler() {
+        try {
+            dbConnection = DriverManager.getConnection(url, user, pass);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-	public Connection getConnection() {
-		return dbConnection;
-	}
+    }
+
+    public Connection getConnection() {
+        return dbConnection;
+    }
 
 
-	public void closeConnection() {
-		try {
-			dbConnection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+    public void closeConnection() {
+        try {
+            dbConnection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

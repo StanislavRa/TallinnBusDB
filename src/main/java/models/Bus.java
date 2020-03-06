@@ -1,22 +1,24 @@
 package models;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Bus {
     private int id;
     private String busNumber;
-    private int driverId;
+    private Driver driver;
     private float fuel;
     private Timestamp createdOn;
     private Date purchasedOn;
 
-    public Bus(String busNumber, int driverId, float fuel, Date purchasedOn) {
+    public Bus(int id, String busNumber, Driver driver, float fuel, Timestamp createdOn, Date purchasedOn) {
+        this.id = id;
         this.busNumber = busNumber;
-        this.driverId = driverId;
+        this.driver = driver;
         this.fuel = fuel;
+        this.createdOn = createdOn;
         this.purchasedOn = purchasedOn;
     }
 
@@ -39,12 +41,12 @@ public class Bus {
         this.busNumber = busNumber;
     }
 
-    public int getDriverId() {
-        return driverId;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setDriverId(int driverId) {
-        this.driverId = driverId;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
     public float getFuel() {
@@ -76,10 +78,10 @@ public class Bus {
         return "Bus{" +
                 "id=" + id +
                 ", busNumber='" + busNumber + '\'' +
-                ", driverId=" + driverId +
+                ", driver=" + driver.getFullName() +
                 ", fuel=" + fuel +
                 ", createdOn=" + createdOn +
-                ", purchasedOn=" + new SimpleDateFormat("dd-MM-yyyy").format(purchasedOn) +
+                ", purchasedOn=" + purchasedOn +
                 '}';
     }
 }
