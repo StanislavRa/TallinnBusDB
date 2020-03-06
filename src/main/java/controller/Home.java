@@ -29,9 +29,9 @@ public class Home extends General implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void findBusButtonPushed(ActionEvent event) throws IOException {
+    public void busesButtonPushed(ActionEvent event) throws IOException {
 
-        changeScreen(event, "/buses.fxml");
+        changeScreen(event, "/buses_new.fxml");
     }
 
     public void exitButtonPushed() {

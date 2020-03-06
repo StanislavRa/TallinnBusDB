@@ -11,7 +11,7 @@
     <children>
         <AnchorPane layoutX="-3.0" layoutY="109.0" prefHeight="326.0" prefWidth="706.0" style="-fx-background-color: fafafa;">
             <children>
-                <Button fx:id="busesButton" layoutX="194.0" layoutY="7.0" mnemonicParsing="false" onAction="#findBusButtonPushed" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Buses" textFill="WHITE">
+                <Button fx:id="busesButton" layoutX="194.0" layoutY="7.0" mnemonicParsing="false" onAction="#busesButtonPushed" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Buses" textFill="WHITE">
                     <font>
                         <Font name="Britannic Bold" size="24.0" />
                     </font>

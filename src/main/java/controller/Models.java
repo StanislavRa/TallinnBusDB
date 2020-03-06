@@ -3,7 +3,6 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import service.Bus;
 import service.Driver;
@@ -13,13 +12,17 @@ import java.io.IOException;
 public abstract class Models<T> extends General {
 
     @FXML
-    protected TableView<T> TableView;
+    protected TableView<T> tableView;
     @FXML
     protected Button addButton;
     @FXML
     protected Button updateButton;
     @FXML
     protected Button deleteButton;
+    @FXML
+    protected Button detailsButton;
+    @FXML
+    protected Button showAll;
     @FXML
     protected Button findButton;
 
@@ -28,11 +31,10 @@ public abstract class Models<T> extends General {
 
     public void userClickedOnTable() {
 
-        this.findButton.setDisable(false);
+        this.detailsButton.setDisable(false);
         this.deleteButton.setDisable(false);
         this.updateButton.setDisable(false);
     }
-
 
     public abstract void setUpTableColumns();
 
@@ -40,11 +42,21 @@ public abstract class Models<T> extends General {
 
     public abstract T getObjectFromFields();
 
+    @FXML
+    public abstract void showAllButtonPushed(ActionEvent event);
+
+    @FXML
     public abstract void addButtonPushed();
 
+    @FXML
     public abstract void updateButtonPushed();
 
+    @FXML
     public abstract void deleteButtonPushed();
 
-    public abstract void findButtonPushed(ActionEvent event) throws IOException;
+    @FXML
+    public abstract void findButtonPushed();
+
+    @FXML
+    public abstract void detailsButtonPushed(ActionEvent event) throws IOException;
 }

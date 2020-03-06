@@ -39,7 +39,7 @@ public class BusDetails{
 
     public void backToBusesButtonPushed(ActionEvent event) throws IOException {
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/buses.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/buses_new.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         //This line gets the Stage information

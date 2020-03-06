@@ -167,6 +167,89 @@ public class Bus implements Service<models.Bus> {
         return null;
     }
 
+    public ObservableList<models.Bus> findBusByDriverName(String driverFullName) {
+
+        Connection connection = DatabaseHandler.getInstance().getConnection();
+        ObservableList<models.Bus> buses = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM buses INNER JOIN drivers" +
+                    " ON drivers.id = buses.driverId where drivers.fullName = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, driverFullName);
+
+            ResultSet resultSetBuses = ps.executeQuery();
+
+            while (resultSetBuses.next()) {
+                models.Bus bus = extractBusFromResultSet(resultSetBuses);
+                buses.add(bus);
+                System.out.println(bus.toString());
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return buses;
+    }
+
+    public ObservableList<models.Bus> findBusByFuel(float fuel) {
+
+        Connection connection = DatabaseHandler.getInstance().getConnection();
+        ObservableList<models.Bus> buses = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM buses" +
+                    " where buses.fuel = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setFloat(1, fuel);
+
+            ResultSet resultSetBuses = ps.executeQuery();
+
+            while (resultSetBuses.next()) {
+                models.Bus bus = extractBusFromResultSet(resultSetBuses);
+                buses.add(bus);
+                System.out.println(bus.toString());
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return buses;
+    }
+
+    public ObservableList<models.Bus> findBusByPurchasedOn(Date purchasedOn) {
+
+        Connection connection = DatabaseHandler.getInstance().getConnection();
+        ObservableList<models.Bus> buses = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM buses" +
+                    " where buses.purchasedOn = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setDate(1, purchasedOn);
+
+            ResultSet resultSetBuses = ps.executeQuery();
+
+            while (resultSetBuses.next()) {
+                models.Bus bus = extractBusFromResultSet(resultSetBuses);
+                buses.add(bus);
+                System.out.println(bus.toString());
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return buses;
+    }
     models.Bus extractBusFromResultSet(ResultSet rs) throws SQLException {
 
         models.Driver getDriver = new Driver().get(rs.getInt("driverId"));

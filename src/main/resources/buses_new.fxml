@@ -69,7 +69,7 @@
                               <Font name="Britannic Bold" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="showAllButton" disable="true" mnemonicParsing="false" onAction="#showAllButtonPushed" prefHeight="102.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Show All" textFill="WHITE">
+                        <Button fx:id="showAllButton" mnemonicParsing="false" onAction="#showAllButtonPushed" prefHeight="102.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Show All" textFill="WHITE">
                            <font>
                               <Font name="Britannic Bold" size="15.0" />
                            </font>
@@ -91,20 +91,20 @@
                               <Insets top="5.0" />
                            </padding>
                            <toggleGroup>
-                              <ToggleGroup fx:id="Find" />
+                              <ToggleGroup fx:id="find" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="findByFuelRadioButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="134.0" text="Find By Fuel" toggleGroup="$Find">
+                        <RadioButton fx:id="findByFuelRadioButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="134.0" text="Find By Fuel" toggleGroup="$find">
                            <padding>
                               <Insets top="5.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton fx:id="findByPurchaseOnRadioButton" layoutX="107.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="196.0" text="Find By Date of Purchase" toggleGroup="$Find">
+                        <RadioButton fx:id="findByPurchaseOnRadioButton" layoutX="107.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="196.0" text="Find By Date of Purchase" toggleGroup="$find">
                            <padding>
                               <Insets top="5.0" />
                            </padding>
                         </RadioButton>
-                        <Button fx:id="findButton" disable="true" mnemonicParsing="false" onAction="#findButtonPushed" prefHeight="26.0" prefWidth="297.0" style="-fx-background-color: #f39c63;" text="Find" textFill="WHITE">
+                        <Button fx:id="findButton" mnemonicParsing="false" onAction="#findButtonPushed" prefHeight="26.0" prefWidth="297.0" style="-fx-background-color: #f39c63;" text="Find" textFill="WHITE">
                            <font>
                               <Font name="Britannic Bold" size="15.0" />
                            </font>

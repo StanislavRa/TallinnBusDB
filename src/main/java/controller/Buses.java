@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Bus;
 
@@ -35,6 +32,14 @@ public class Buses extends Models<Bus> implements Initializable {
     private TextField fuelTextField;
     @FXML
     private DatePicker purchasedOnDatePicker;
+    @FXML
+    private ToggleGroup find;
+    @FXML
+    private RadioButton findByDriverRadioButton;
+    @FXML
+    private RadioButton findByFuelRadioButton;
+    @FXML
+    private RadioButton findByPurchaseOnRadioButton;
 
 
     @Override
@@ -42,7 +47,7 @@ public class Buses extends Models<Bus> implements Initializable {
 
         setUpTableColumns();
         //load data
-        TableView.setItems(bus.getAll());
+        tableView.setItems(bus.getAll());
         driverChoiceBox.getItems().addAll(driver.getAllNames());
     }
 
@@ -70,11 +75,11 @@ public class Buses extends Models<Bus> implements Initializable {
 
         System.out.println(this.bus.update(changeableBus));
 
-        TableView.setItems(this.bus.getAll());
+        tableView.setItems(this.bus.getAll());
     }
 
     public Bus getObjectFromSelectedTableRow() {
-        return TableView.getSelectionModel().getSelectedItem();
+        return tableView.getSelectionModel().getSelectedItem();
     }
 
     public Bus getObjectFromFields() {
@@ -87,33 +92,49 @@ public class Buses extends Models<Bus> implements Initializable {
         return bus;
     }
 
+    @Override
+    public void showAllButtonPushed(ActionEvent event) {
+        tableView.setItems(bus.getAll());
+    }
+
     public void addButtonPushed() {
 
         //Get all the items from the table as a list, then add the new bus to the list
         System.out.println(this.bus.save(getObjectFromFields()));
 
-        TableView.getItems().add(getObjectFromFields());
+        tableView.getItems().add(getObjectFromFields());
     }
 
-    public void findButtonPushed(ActionEvent event) throws IOException {
+    public void detailsButtonPushed(ActionEvent event) throws IOException {
 
         //access the controller and call a method
         BusDetails controller = changeScreen(event, "/busView.fxml").getController();
-        controller.initData(TableView.getSelectionModel().getSelectedItem());
+        controller.initData(tableView.getSelectionModel().getSelectedItem());
     }
 
     public void deleteButtonPushed() {
 
         ObservableList<Bus> selectedRows, allBuses;
-        allBuses = TableView.getItems();
+        allBuses = tableView.getItems();
 
         //this gives us the rows that were selected
-        selectedRows = TableView.getSelectionModel().getSelectedItems();
+        selectedRows = tableView.getSelectionModel().getSelectedItems();
 
         //loop over the selected rows and remove the Bus objects from the table
         for (Bus bus : selectedRows) {
             allBuses.remove(bus);
             System.out.println(this.bus.delete(bus));
         }
+    }
+
+    @Override
+    public void findButtonPushed() {
+
+        if (findByDriverRadioButton.isSelected())
+            tableView.setItems(bus.findBusByDriverName(driverChoiceBox.getValue()));
+        if (findByFuelRadioButton.isSelected())
+            tableView.setItems(bus.findBusByFuel(Float.parseFloat(fuelTextField.getText())));
+        if (findByPurchaseOnRadioButton.isSelected())
+            tableView.setItems(bus.findBusByPurchasedOn(parser.convertToDateViaSqlDate(purchasedOnDatePicker.getValue())));
     }
 }
