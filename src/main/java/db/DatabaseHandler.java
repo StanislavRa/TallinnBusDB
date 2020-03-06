@@ -6,7 +6,11 @@ import java.sql.SQLException;
 
 public class DatabaseHandler {
 
-    private static final String url = "jdbc:mysql:" +    // Database type
+    private static DatabaseHandler instance = new DatabaseHandler();
+    private Connection dbConnection;
+
+    private static final String url =
+            "jdbc:mysql:" +         // Database type
             "//localhost" +         // Host
             ":3306/" +              // Port
             "tallinnbusdb" +        // Database name
@@ -14,21 +18,21 @@ public class DatabaseHandler {
     private static final String user = "root";
     private static final String pass = "Rs15021988)";
 
-    Connection dbConnection;
-
-    public DatabaseHandler() {
+    private DatabaseHandler() {
         try {
             dbConnection = DriverManager.getConnection(url, user, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public static DatabaseHandler getInstance() {
+        return instance;
     }
 
     public Connection getConnection() {
         return dbConnection;
     }
-
 
     public void closeConnection() {
         try {

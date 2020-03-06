@@ -8,12 +8,10 @@ import java.sql.*;
 
 public class Bus implements Service<models.Bus> {
 
+
     @Override
     public models.Bus get(int id) {
-
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
-
+            Connection connection = DatabaseHandler.getInstance().getConnection();
         try {
 
             String sql = "SELECT * FROM buses where id = ? limit 1";
@@ -29,7 +27,7 @@ public class Bus implements Service<models.Bus> {
             } else System.out.println("Bus does not exist");
 
             ps.close();
-            databaseHandler.closeConnection();
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -39,9 +37,7 @@ public class Bus implements Service<models.Bus> {
 
     @Override
     public ObservableList<models.Bus> getAll() {
-
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         ObservableList<models.Bus> buses = FXCollections.observableArrayList();
         System.out.println("List of all buses:");
@@ -58,7 +54,6 @@ public class Bus implements Service<models.Bus> {
             }
 
             statement.close();
-            databaseHandler.closeConnection();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -69,26 +64,24 @@ public class Bus implements Service<models.Bus> {
     @Override
     public boolean save(models.Bus bus) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
 
             String sql = "INSERT buses (busNumber, driverId, fuel, purchasedOn) VALUES (?, ?, ?, ?)";
+
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, bus.getBusNumber().toString());
+
+            ps.setString(1, bus.getBusNumber());
             ps.setInt(2, bus.getDriver().getId());
             ps.setFloat(3, bus.getFuel());
             ps.setDate(4, new java.sql.Date(bus.getPurchasedOn().getTime()));
 
-            int i = ps.executeUpdate();
+            int result = ps.executeUpdate();
 
             ps.close();
-            databaseHandler.closeConnection();
 
-            System.out.println("Saved bus:\n" + bus.toString());
-
-            return i == 1;
+            return result == 1;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -99,8 +92,7 @@ public class Bus implements Service<models.Bus> {
     @Override
     public boolean update(models.Bus bus) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
             String sql = "UPDATE buses " +
@@ -109,7 +101,7 @@ public class Bus implements Service<models.Bus> {
 
             PreparedStatement ps = connection.prepareStatement(sql);
 
-            ps.setString(1, bus.getBusNumber().toString());
+            ps.setString(1, bus.getBusNumber());
             ps.setInt(2, bus.getDriver().getId());
             ps.setFloat(3, bus.getFuel());
             ps.setDate(4, new java.sql.Date(bus.getPurchasedOn().getTime()));
@@ -118,7 +110,6 @@ public class Bus implements Service<models.Bus> {
             int result = ps.executeUpdate();
 
             ps.close();
-            databaseHandler.closeConnection();
 
             return result == 1;
 
@@ -131,19 +122,16 @@ public class Bus implements Service<models.Bus> {
     @Override
     public boolean delete(models.Bus bus) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
 
             String sql = "DELETE FROM buses WHERE id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, bus.getId());
-
             int result = ps.executeUpdate();
 
             ps.close();
-            databaseHandler.closeConnection();
 
             return result == 1;
 
@@ -155,8 +143,7 @@ public class Bus implements Service<models.Bus> {
 
     public models.Bus findBusByNumber(String busNumber) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
 
@@ -173,7 +160,6 @@ public class Bus implements Service<models.Bus> {
             } else System.out.println("Bus does not exist");
 
             ps.close();
-            databaseHandler.closeConnection();
 
         } catch (Exception ex) {
             ex.printStackTrace();

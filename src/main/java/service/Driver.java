@@ -13,8 +13,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public models.Driver get(int id) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
             String sql = "SELECT * FROM drivers where id = ? limit 1";
@@ -30,7 +29,6 @@ public class Driver implements Service<models.Driver> {
             } else System.out.println("Driver does not exist");
 
             ps.close();
-            databaseHandler.closeConnection();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -41,8 +39,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public ObservableList<models.Driver> getAll() {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         ObservableList<models.Driver> drivers = FXCollections.observableArrayList();
         System.out.println("List of all drivers:");
@@ -59,7 +56,6 @@ public class Driver implements Service<models.Driver> {
             }
 
             statement.close();
-            databaseHandler.closeConnection();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -71,8 +67,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public boolean save(models.Driver driver) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
             String sql = "INSERT drivers (fullName, address, phone, age, height) VALUES (?, ?, ?, ?, ?)";
@@ -87,7 +82,6 @@ public class Driver implements Service<models.Driver> {
             int i = ps.executeUpdate();
 
             ps.close();
-            databaseHandler.closeConnection();
 
             System.out.println("Saved driver:\n" + driver.toString());
 
@@ -102,8 +96,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public boolean update(models.Driver driver) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
             String sql = "UPDATE drivers" +
@@ -121,7 +114,6 @@ public class Driver implements Service<models.Driver> {
             int i = ps.executeUpdate();
 
             ps.close();
-            databaseHandler.closeConnection();
 
             System.out.println("Updated driver:\n" + driver.toString());
 
@@ -136,8 +128,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public boolean delete(models.Driver driver) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
 
@@ -148,7 +139,6 @@ public class Driver implements Service<models.Driver> {
             int result = ps.executeUpdate();
 
             ps.close();
-            databaseHandler.closeConnection();
 
             return result == 1;
 
@@ -160,8 +150,7 @@ public class Driver implements Service<models.Driver> {
 
     public models.Driver findDriverByFullName(String driverFullName) {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
 
@@ -178,7 +167,6 @@ public class Driver implements Service<models.Driver> {
             } else System.out.println("Driver does not exist");
 
             ps.close();
-            databaseHandler.closeConnection();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -188,8 +176,7 @@ public class Driver implements Service<models.Driver> {
 
     public List<String> getAllNames() {
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         List<String> driverNames = new ArrayList<>();
         System.out.println("List of all driver names:");
@@ -204,7 +191,6 @@ public class Driver implements Service<models.Driver> {
             }
 
             statement.close();
-            databaseHandler.closeConnection();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
