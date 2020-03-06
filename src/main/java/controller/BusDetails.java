@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BusDetailed extends Controller implements Initializable {
+public class BusDetails{
 
     @FXML
     private Button backToBusesButton;
@@ -47,9 +47,5 @@ public class BusDetailed extends Controller implements Initializable {
 
         window.setScene(tableViewScene);
         window.show();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
     }
 }

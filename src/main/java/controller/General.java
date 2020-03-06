@@ -2,29 +2,17 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import parser.Parser;
-import service.Bus;
-import service.Driver;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class General {
 
-    Bus bus = new Bus();
-    Driver driver = new Driver();
     Parser parser = new Parser();
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void homeButtonPushed(ActionEvent event) throws IOException {
 

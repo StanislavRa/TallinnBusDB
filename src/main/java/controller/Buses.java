@@ -14,7 +14,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-public class AllBuses extends Controller implements Initializable {
+public class Buses extends Models<Bus> implements Initializable {
 
     @FXML
     private TableView<Bus> busesTableView;
@@ -26,8 +26,6 @@ public class AllBuses extends Controller implements Initializable {
     private TableColumn<Bus, String> fuelColumn;
     @FXML
     private TableColumn<Bus, Date> purchasedOnColumn;
-    @FXML
-    private TableColumn<Bus, Button> deleteButtonColumn;
 
     @FXML
     private ChoiceBox<String> driverChoiceBox;
@@ -68,9 +66,8 @@ public class AllBuses extends Controller implements Initializable {
     }
 
 
-
-    public void updateBusButtonPushed() {
-        Bus changeableBus = getBusFromSelectedTableRow();
+    public void updateButtonPushed() {
+        Bus changeableBus = getObjectFromSelectedTableRow();
 
         if (!busNumberTextField.getText().isEmpty())
             changeableBus.setBusNumber(busNumberTextField.getText());
@@ -86,11 +83,11 @@ public class AllBuses extends Controller implements Initializable {
         busesTableView.setItems(this.bus.getAll());
     }
 
-    public Bus getBusFromSelectedTableRow() {
+    public Bus getObjectFromSelectedTableRow() {
         return busesTableView.getSelectionModel().getSelectedItem();
     }
 
-    public Bus getBusFromFields() {
+    public Bus getObjectFromFields() {
 
         Bus bus = new Bus();
         bus.setBusNumber(busNumberTextField.getText());
@@ -100,18 +97,18 @@ public class AllBuses extends Controller implements Initializable {
         return bus;
     }
 
-    public void addBusButtonPushed() {
+    public void addButtonPushed() {
 
         //Get all the items from the table as a list, then add the new bus to the list
-        System.out.println(this.bus.save(getBusFromFields()));
+        System.out.println(this.bus.save(getObjectFromFields()));
 
-        busesTableView.getItems().add(getBusFromFields());
+        busesTableView.getItems().add(getObjectFromFields());
     }
 
-    public void findBusButtonPushed(ActionEvent event) throws IOException {
+    public void findButtonPushed(ActionEvent event) throws IOException {
 
         //access the controller and call a method
-        BusDetailed controller = changeScreen(event, "/busView.fxml").getController();
+        BusDetails controller = changeScreen(event, "/busView.fxml").getController();
         controller.initData(busesTableView.getSelectionModel().getSelectedItem());
     }
 

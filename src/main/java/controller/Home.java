@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Home extends Controller implements Initializable {
+public class Home extends General implements Initializable {
 
     @FXML
     private Button busesButton;
