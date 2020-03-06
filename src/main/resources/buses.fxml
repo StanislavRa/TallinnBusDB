@@ -27,7 +27,7 @@
             </Button>
             <VBox layoutX="103.0" layoutY="28.0" prefHeight="335.0" prefWidth="500.0">
                <children>
-                  <TableView fx:id="busesTableView" onMouseClicked="#userClickedOnTable" prefHeight="286.0" prefWidth="448.0">
+                  <TableView fx:id="TableView" onMouseClicked="#userClickedOnTable" prefHeight="286.0" prefWidth="448.0">
                      <columns>
                         <TableColumn fx:id="busNumberColumn" prefWidth="116.79993438720703" text="Bus Number" />
                         <TableColumn fx:id="driverFullNameColumn" prefWidth="173.60003662109375" text="Driver Full Name" />
@@ -52,22 +52,22 @@
                   </HBox>
                   <HBox prefHeight="21.0" prefWidth="406.0" spacing="2.0">
                      <children>
-                        <Button fx:id="addBusButton" mnemonicParsing="false" onAction="#addButtonPushed" prefHeight="61.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Add Bus" textFill="WHITE">
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPushed" prefHeight="61.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Add Bus" textFill="WHITE">
                            <font>
                               <Font name="Britannic Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="updateBusButton" disable="true" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#updateButtonPushed" prefHeight="61.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Update" textFill="WHITE">
+                        <Button fx:id="updateButton" disable="true" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#updateButtonPushed" prefHeight="61.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Update" textFill="WHITE">
                            <font>
                               <Font name="Britannic Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="deleteBusButton" disable="true" mnemonicParsing="false" onAction="#deleteButtonPushed" prefHeight="102.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Delete Bus" textFill="WHITE">
+                        <Button fx:id="deleteButton" disable="true" mnemonicParsing="false" onAction="#deleteButtonPushed" prefHeight="102.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Delete Bus" textFill="WHITE">
                            <font>
                               <Font name="Britannic Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="findBusButton" disable="true" mnemonicParsing="false" onAction="#findButtonPushed" prefHeight="102.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Find Bus" textFill="WHITE">
+                        <Button fx:id="findButton" disable="true" mnemonicParsing="false" onAction="#findButtonPushed" prefHeight="102.0" prefWidth="200.0" style="-fx-background-color: #f39c63;" text="Find Bus" textFill="WHITE">
                            <font>
                               <Font name="Britannic Bold" size="12.0" />
                            </font>

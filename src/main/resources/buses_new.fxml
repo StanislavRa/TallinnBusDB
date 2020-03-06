@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -85,17 +86,20 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="284.0" prefHeight="21.0" prefWidth="652.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" prefHeight="22.0" prefWidth="145.0" selected="true" text="Find By Driver">
+                        <RadioButton fx:id="findByDriverRadioButton" mnemonicParsing="false" prefHeight="22.0" prefWidth="145.0" selected="true" text="Find By Driver">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Find" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="findByFuelRadioButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="134.0" text="Find By Fuel" toggleGroup="$Find">
                            <padding>
                               <Insets top="5.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="134.0" text="Find By Fuel">
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
-                        </RadioButton>
-                        <RadioButton layoutX="107.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="196.0" text="Find By Date of Purchase">
+                        <RadioButton fx:id="findByPurchaseOnRadioButton" layoutX="107.0" layoutY="10.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="196.0" text="Find By Date of Purchase" toggleGroup="$Find">
                            <padding>
                               <Insets top="5.0" />
                            </padding>
