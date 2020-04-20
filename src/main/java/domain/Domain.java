@@ -14,10 +14,5 @@ public class Domain extends Application {
         primaryStage.setTitle("My First App");
         primaryStage.setScene(new Scene(root, 700, 435));
         primaryStage.show();
-        //Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
     }
-
-   /* public void shutdown() {
-        DatabaseHandler.getInstance().closeConnection();
-    }*/
 }
