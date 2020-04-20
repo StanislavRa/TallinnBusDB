@@ -2,24 +2,13 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import models.Bus;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class BusDetails{
+public class BusDetails extends General {
 
-    @FXML
-    private Button backToBusesButton;
     @FXML
     private Label driverFullNameLabel;
     @FXML
@@ -39,13 +28,6 @@ public class BusDetails{
 
     public void backToBusesButtonPushed(ActionEvent event) throws IOException {
 
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/buses_new.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(tableViewScene);
-        window.show();
+        changeScreen(event, "/buses.fxml");
     }
 }

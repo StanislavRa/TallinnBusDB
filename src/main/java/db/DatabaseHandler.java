@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseHandler {
 
-    private static DatabaseHandler instance = new DatabaseHandler();
+    private static final DatabaseHandler instance = new DatabaseHandler();
     private Connection dbConnection;
 
     private static final String url =
@@ -14,9 +14,11 @@ public class DatabaseHandler {
             "//localhost" +         // Host
             ":3306/" +              // Port
             "tallinnbusdb" +        // Database name
-            "?serverTimezone=UTC";  // Timezone
+            "";  // Timezone
+
     private static final String user = "root";
-    private static final String pass = "Rs15021988)";
+
+    private static final String pass = "root";
 
     private DatabaseHandler() {
         try {

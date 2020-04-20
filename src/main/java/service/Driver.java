@@ -1,6 +1,5 @@
 package service;
 
-import db.DatabaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,14 +10,14 @@ import java.util.List;
 public class Driver implements Service<models.Driver> {
 
     @Override
-    public models.Driver get(int id) {
+    public models.Driver get(Long id) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+        //Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         try {
             String sql = "SELECT * FROM drivers where id = ? limit 1";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setLong(1, id);
 
             ResultSet resultSetDrivers = ps.executeQuery();
 
@@ -39,7 +38,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public ObservableList<models.Driver> getAll() {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+        //Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         ObservableList<models.Driver> drivers = FXCollections.observableArrayList();
         System.out.println("List of all drivers:");
@@ -67,7 +66,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public boolean save(models.Driver driver) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+       // Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         try {
             String sql = "INSERT drivers (fullName, address, phone, age, height) VALUES (?, ?, ?, ?, ?)";
@@ -96,7 +95,7 @@ public class Driver implements Service<models.Driver> {
     @Override
     public boolean update(models.Driver driver) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+       // Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         try {
             String sql = "UPDATE drivers" +
@@ -128,13 +127,13 @@ public class Driver implements Service<models.Driver> {
     @Override
     public boolean delete(models.Driver driver) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+       // Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         try {
 
             String sql = "DELETE FROM drivers WHERE id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, driver.getId());
+            ps.setLong(1, driver.getId());
 
             int result = ps.executeUpdate();
 
@@ -150,7 +149,7 @@ public class Driver implements Service<models.Driver> {
 
     public models.Driver findDriverByFullName(String driverFullName) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+       // Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         try {
 
@@ -174,9 +173,91 @@ public class Driver implements Service<models.Driver> {
         return null;
     }
 
+    public ObservableList<models.Driver> findDriversByAddress(String driverAddress) {
+
+        // Connection connection = DatabaseHandler_ol.getInstance().getConnection();
+
+        ObservableList<models.Driver> drivers = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM drivers where address = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, driverAddress);
+
+            ResultSet resultSetDrivers = ps.executeQuery();
+
+            while (resultSetDrivers.next()) {
+                models.Driver driver = extractDriverFromResultSet(resultSetDrivers);
+                drivers.add(driver);
+                System.out.println(driver.toString());
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return drivers;
+    }
+
+    public ObservableList<models.Driver> findDriversByAge(int driverAge) {
+
+        // Connection connection = DatabaseHandler_ol.getInstance().getConnection();
+
+        ObservableList<models.Driver> drivers = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM drivers where age = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, driverAge);
+
+            ResultSet resultSetDrivers = ps.executeQuery();
+
+            while (resultSetDrivers.next()) {
+                models.Driver driver = extractDriverFromResultSet(resultSetDrivers);
+                drivers.add(driver);
+                System.out.println(driver.toString());
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return drivers;
+    }
+
+    public ObservableList<models.Driver> findDriversByHeight(float driverHeight) {
+
+        ObservableList<models.Driver> drivers = FXCollections.observableArrayList();
+
+        try {
+
+            String sql = "SELECT * FROM drivers where height = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setFloat(1, driverHeight);
+
+            ResultSet resultSetDrivers = ps.executeQuery();
+
+            while (resultSetDrivers.next()) {
+                models.Driver driver = extractDriverFromResultSet(resultSetDrivers);
+                drivers.add(driver);
+                System.out.println(driver.toString());
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return drivers;
+    }
+
     public List<String> getAllNames() {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
+        //Connection connection = DatabaseHandler_ol.getInstance().getConnection();
 
         List<String> driverNames = new ArrayList<>();
         System.out.println("List of all driver names:");
@@ -201,7 +282,7 @@ public class Driver implements Service<models.Driver> {
     private models.Driver extractDriverFromResultSet(ResultSet rs) throws SQLException {
 
         models.Driver driver = new models.Driver();
-        driver.setId(rs.getInt("id"));
+        driver.setId(rs.getLong("id"));
         driver.setFullName(rs.getString("fullName"));
         driver.setAddress(rs.getString("address"));
         driver.setPhone(rs.getString("phone"));

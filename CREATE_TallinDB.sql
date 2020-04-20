@@ -1,61 +1,56 @@
-DROP DATABASE IF EXISTS rWRRgkd7lg;
-		CREATE DATABASE rWRRgkd7lg;
-                    USE	rWRRgkd7lg;
+DROP DATABASE IF EXISTS tallinnbusdb;
+		CREATE DATABASE tallinnbusdb;
+                    USE	tallinnbusdb;
 
 CREATE TABLE drivers (
-	id 			INT 		AUTO_INCREMENT,
+	id 			BIGINT(30) 		AUTO_INCREMENT,
 	fullName	VARCHAR(20) NOT NULL,
 	address		VARCHAR(50) NOT NULL,
 	phone		VARCHAR(30) NOT NULL,
 	age			INT(3)		NOT NULL,
-	height		FLOAT(4)	NOT NULL,
+	height		DECIMAL(19,2)	NOT NULL,
 	createdOn	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP, 
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE buses (
-	id			INT			AUTO_INCREMENT,
+	id			BIGINT(30)			AUTO_INCREMENT,
 	busNumber	VARCHAR(10) NOT NULL,
-	driverId	INT			NOT NULL,
-	fuel 		FLOAT(10)	NOT NULL,
+	driverId	BIGINT(30)			NOT NULL,
+	fuel 		DECIMAL(19,2)	NOT NULL,
 	createdOn	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP, 
 	purchasedOn DATE		NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (driverId) REFERENCES drivers (id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE locations (
-	id			INT			AUTO_INCREMENT,
+	id			BIGINT(30)			AUTO_INCREMENT,
 	stopName 	VARCHAR(30) NOT NULL,
 	createdOn	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP, 
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE passengers (
-	id 				INT			AUTO_INCREMENT,
+	id 				BIGINT(30)			AUTO_INCREMENT,
 	fullName		VARCHAR(30) NOT NULL,
 	email			VARCHAR(30) NOT NULL,
 	phoneNumber		VARCHAR(30) NOT NULL,
 	age 			INT(3)		NOT NULL,
-	startLocationId INT 		NOT NULL,
-	stopLocationId	INT 		NOT NULL,
-	busId 			INT 		NOT NULL,
+	startLocationId BIGINT(30) 		NOT NULL,
+	stopLocationId	BIGINT(30) 		NOT NULL,
+	busId 			BIGINT(30) 		NOT NULL,
 	createdOn		TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP, 
-	PRIMARY KEY (id),
-	FOREIGN KEY (startLocationId)	REFERENCES locations (id),
-	FOREIGN KEY (stopLocationId)	REFERENCES locations (id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE timetable (
-	id			INT			AUTO_INCREMENT,
+	id			BIGINT(30)			AUTO_INCREMENT,
 	weekday 	VARCHAR(30) NOT NULL,
 	arrivalTime TIME        NOT NULL,
-	locationId  INT         NOT NULL,
-	busId       INT         NOT NULL,
+	locationId  BIGINT(30)         NOT NULL,
+	busId       BIGINT(30)         NOT NULL,
 	createdOn	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (id),
-	FOREIGN KEY (locationId)    REFERENCES locations (id),
-	FOREIGN KEY (busId)     	REFERENCES buses (id)
+	PRIMARY KEY (id)
 );
 
 ALTER TABLE buses 
@@ -65,8 +60,22 @@ ALTER TABLE buses
 ALTER TABLE timetable
   ADD CONSTRAINT FK_TimetableBuses FOREIGN KEY (busId) REFERENCES buses(id)
   ON DELETE CASCADE;
-
-
+  
+  ALTER TABLE timetable
+  ADD CONSTRAINT FK_TimetableLocations FOREIGN KEY (locationId) REFERENCES locations(id)
+  ON DELETE CASCADE;
+  
+  ALTER TABLE passengers
+  ADD CONSTRAINT FK_PassengersBuses FOREIGN KEY (busId) REFERENCES buses(id)
+  ON DELETE CASCADE;
+  
+ALTER TABLE passengers
+  ADD CONSTRAINT FK_PassengersStartLocations FOREIGN KEY (startLocationId) REFERENCES locations(id)
+  ON DELETE CASCADE;
+  
+  ALTER TABLE passengers
+  ADD CONSTRAINT FK_PassengersStopLocations FOREIGN KEY (stopLocationId) REFERENCES locations(id)
+  ON DELETE CASCADE;
 
 INSERT INTO drivers
 			(fullName,				address,		phone,			age, 	height)

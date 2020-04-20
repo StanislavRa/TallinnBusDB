@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a3201c3e-d072-4e93-aae2-aaff5b35d590" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/DriverDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Drivers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/db/DatabaseHandler_ol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/db/DatabaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/db/DatabaseInfoAnalyzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/db/DatabaseInfoCSVParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/drivers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Buses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Buses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Models.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Models.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Domain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Domain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Service.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="remote1" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="remote1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="remote1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DCdmjMhpyO: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="remote1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DCdmjMhpyO: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="buses: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="remote1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DCdmjMhpyO: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="drivers: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="rWRRgkd7lg@remotemysql.com" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sql7326449@sql7.freesqldatabase.com" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sql7326449@sql7.freesqldatabase.com" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="sql7326449@sql7.freesqldatabase.com" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="sql7326449: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="TallinnBusDB" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="StanislavRa" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="TallinnBusDB" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Stanislavr\OneDrive\Documents\Private\Java\IdeaProjects\TallinnBusDB" />
+        <option value="C:\Users\Stanislavr\OneDrive\Documents\Private\Java\IdeaProjects\TallinnBusDB\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XsonrcvmMWwZdZSTd76gvayNfK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TallinnBusDB_personal" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Domain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domain.Domain" />
+      <module name="TallinnBusDB" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Domain" />
+        <item itemvalue="Application.Domain" />
+        <item itemvalue="Application.Domain" />
+        <item itemvalue="Application.Domain" />
+        <item itemvalue="Application.Domain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLPlugin.ProjectConfiguration">
+    <queries />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:sql7326449@sql7.freesqldatabase.com" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:sql7326449@sql7.freesqldatabase.com" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@28c595b3" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a3201c3e-d072-4e93-aae2-aaff5b35d590" name="Default Changelist" comment="" />
+      <created>1581844332114</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581844332114</updated>
+      <workItem from="1581887063513" duration="450000" />
+      <workItem from="1581887547090" duration="27000" />
+      <workItem from="1581887685590" duration="2105000" />
+      <workItem from="1581889906767" duration="57000" />
+      <workItem from="1581890526884" duration="16000" />
+      <workItem from="1581890710462" duration="276000" />
+      <workItem from="1581891002663" duration="170000" />
+      <workItem from="1581962272870" duration="320000" />
+      <workItem from="1581962611398" duration="951000" />
+      <workItem from="1582049704509" duration="328000" />
+      <workItem from="1582050083606" duration="2358000" />
+      <workItem from="1582221677918" duration="9935000" />
+      <workItem from="1582320021023" duration="13000" />
+      <workItem from="1582320058045" duration="54000" />
+      <workItem from="1582367175084" duration="2062000" />
+      <workItem from="1582400832285" duration="4657000" />
+      <workItem from="1582408160771" duration="5731000" />
+      <workItem from="1582482607034" duration="6757000" />
+      <workItem from="1582730327554" duration="692000" />
+      <workItem from="1582731224774" duration="4221000" />
+      <workItem from="1582735475494" duration="1173000" />
+      <workItem from="1582745134987" duration="666000" />
+      <workItem from="1582811252361" duration="7952000" />
+      <workItem from="1582828445034" duration="12291000" />
+      <workItem from="1582889799444" duration="384000" />
+      <workItem from="1582897548681" duration="6825000" />
+      <workItem from="1582913817236" duration="6354000" />
+      <workItem from="1582923853358" duration="294000" />
+      <workItem from="1582924192950" duration="21000" />
+      <workItem from="1582959548407" duration="9938000" />
+      <workItem from="1582980139697" duration="3198000" />
+      <workItem from="1583080667282" duration="1208000" />
+      <workItem from="1583261740990" duration="604000" />
+      <workItem from="1583346374637" duration="2992000" />
+      <workItem from="1583353421957" duration="9186000" />
+      <workItem from="1583397200673" duration="1246000" />
+      <workItem from="1583401551696" duration="345000" />
+      <workItem from="1583403541426" duration="3457000" />
+      <workItem from="1583409581225" duration="6288000" />
+      <workItem from="1583417670595" duration="500000" />
+      <workItem from="1583426956372" duration="8924000" />
+      <workItem from="1583441609113" duration="8104000" />
+      <workItem from="1583494530714" duration="3535000" />
+      <workItem from="1583506095776" duration="8447000" />
+      <workItem from="1583519302949" duration="1923000" />
+      <workItem from="1583564618792" duration="6402000" />
+      <workItem from="1583604487034" duration="9426000" />
+    </task>
+    <task id="LOCAL−00001" summary="sql file edited:&#10; added table timetable&#10; inserted some values into table">
+      <created>1582225410949</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1582225410949</updated>
+    </task>
+    <task id="LOCAL−00002" summary="added field id to Bus class">
+      <created>1582368598064</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1582368598064</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Changed remote DB credentials in DatabaseHandler and in CREATE_TallinDB.sql. Added closeConnection method into DriverController">
+      <created>1582401552202</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1582401552202</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Changed remote DB credentials in DatabaseHandler and in CREATE_TallinDB.sql. Added closeConnection method into DriverController">
+      <created>1582734469929</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1582734469929</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Adjusted Bus and DatabaseHandler, erased PassengersController">
+      <created>1582841716498</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1582841716498</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Recreated BusController, cleaned up Main">
+      <created>1582921985021</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1582921985021</updated>
+    </task>
+    <task id="LOCAL−00007" summary="Adjusted Bus and DatabaseHandler, erased PassengersController">
+      <created>1582922285316</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1582922285316</updated>
+    </task>
+    <task id="LOCAL−00008" summary="Project adopted to JavaFX:&#10;added resources with *.fxml files (they are created with SceneBuilder software)&#10;principle of Controller classes are changed, now controllers are responsible for UI, old Controllers (with SQL statements) are moved to Services classes, so old BusController is BusService now.&#10;Each controller is responsible for each UI window.&#10;methods with CRUD are returning something now: Objects, Lists of objects or boolean.&#10;Main method is not allowed to change, it is fully adopted to JavaFX.">
+      <created>1583081346261</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1583081346261</updated>
+    </task>
+    <task id="LOCAL−00009" summary="Adjusted Controllers and Services">
+      <created>1583494646808</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1583494646808</updated>
+    </task>
+    <task id="LOCAL−00010" summary="Made DatabaseHandler as a singleton, so that services were adjusted as well">
+      <created>1583498063463</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1583498063463</updated>
+    </task>
+    <task id="LOCAL−00011" summary="Refactored some classes' names, controller classes generalized">
+      <created>1583510987821</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1583510987821</updated>
+    </task>
+    <task id="LOCAL−00012" summary="Buttons are generalized">
+      <created>1583512754673</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1583512754673</updated>
+    </task>
+    <task id="LOCAL−00013" summary="Added find functionality to Buses">
+      <created>1583515840862</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1583515840862</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="sql file edited:&#10; added table timetable&#10; inserted some values into table" />
+    <MESSAGE value="added field id to Bus class" />
+    <MESSAGE value="Changed remote DB credentials in DatabaseHandler and in CREATE_TallinDB.sql. Added closeConnection method into DriverController" />
+    <MESSAGE value="Recreated BusController, cleaned up Main" />
+    <MESSAGE value="Adjusted Bus and DatabaseHandler, erased PassengersController" />
+    <MESSAGE value="Project adopted to JavaFX:&#10;added resources with *.fxml files (they are created with SceneBuilder software)&#10;principle of Controller classes are changed, now controllers are responsible for UI, old Controllers (with SQL statements) are moved to Services classes, so old BusController is BusService now.&#10;Each controller is responsible for each UI window.&#10;methods with CRUD are returning something now: Objects, Lists of objects or boolean.&#10;Main method is not allowed to change, it is fully adopted to JavaFX." />
+    <MESSAGE value="Adjusted Controllers and Services" />
+    <MESSAGE value="Made DatabaseHandler as a singleton, so that services were adjusted as well" />
+    <MESSAGE value="Refactored some classes' names, controller classes generalized" />
+    <MESSAGE value="Buttons are generalized" />
+    <MESSAGE value="Added find functionality to Buses" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added find functionality to Buses" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="76" key="#Project_Structure" timestamp="1582223605803">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="76" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1582223605803" />
+    <state x="361" y="76" key="#SQL_Dialects" timestamp="1581888593703">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="76" key="#SQL_Dialects/0.0.1536.834@0.0.1536.834" timestamp="1581888593703" />
+    <state x="695" y="14" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583611592856">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="2855" y="217" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1582907124352" />
+    <state x="695" y="14" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1583611592856" />
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1583570320665">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="2676" y="191" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583514377623" />
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1583570320665" />
+    <state x="618" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1581891051343">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="618" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834@0.0.1536.834" timestamp="1581891051343" />
+    <state x="2591" y="327" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583432775703">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2591" y="327" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583432775703" />
+    <state x="503" y="227" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.834@0.0.1536.834" timestamp="1582320030380" />
+    <state x="2707" y="459" width="408" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1581962919745">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2707" y="459" width="408" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1581962919745" />
+    <state x="2536" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583411513265">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2536" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583411513265" />
+    <state x="458" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1583362065513" />
+    <state x="499" y="164" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582914512628">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="499" y="164" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.834@0.0.1536.834" timestamp="1582914512628" />
+    <state x="650" y="170" key="#xdebugger.XInspectDialog" timestamp="1583616140522">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="650" y="170" key="#xdebugger.XInspectDialog/0.0.1536.834@0.0.1536.834" timestamp="1583616140522" />
+    <state x="1982" y="0" key="CommitChangelistDialog2" timestamp="1583515838674">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="1982" y="0" key="CommitChangelistDialog2/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583515838674" />
+    <state x="235" y="0" key="CommitChangelistDialog2/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582734558813" />
+    <state x="143" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1583081344509" />
+    <state x="299" y="73" key="DBNavigator.ProjectSettingsDialog" timestamp="1581890221080">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="299" y="73" key="DBNavigator.ProjectSettingsDialog/0.0.1536.834@0.0.1536.834" timestamp="1581890221080" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1582223494893">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1536.834@0.0.1536.834" timestamp="1582223494893" />
+    <state x="147" y="66" key="DiffContextDialog" timestamp="1582922609827">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="147" y="66" key="DiffContextDialog/0.0.1536.834@0.0.1536.834" timestamp="1582922609827" />
+    <state x="549" y="173" key="FileChooserDialogImpl" timestamp="1583607406309">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="686" y="218" key="FileChooserDialogImpl/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@0.0.1920.1050" timestamp="1582214736312" />
+    <state x="2646" y="249" key="FileChooserDialogImpl/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583435109708" />
+    <state x="726" y="249" key="FileChooserDialogImpl/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582731860788" />
+    <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1583607406309" />
+    <state x="547" y="284" key="Github.CreatePullRequestDialog" timestamp="1582229463492">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="547" y="284" key="Github.CreatePullRequestDialog/0.0.1536.834@0.0.1536.834" timestamp="1582229463492" />
+    <state x="2781" y="493" key="Github.ShareDialog" timestamp="1581963126383">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2781" y="493" key="Github.ShareDialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1581963126383" />
+    <state x="2580" y="304" key="Github.UntrackedFilesDialog" timestamp="1581963153743">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2580" y="304" key="Github.UntrackedFilesDialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1581963153743" />
+    <state width="1493" height="118" key="GridCell.Tab.0.bottom" timestamp="1583615926707">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1815" height="350" key="GridCell.Tab.0.bottom/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583515872200" />
+    <state width="1815" height="340" key="GridCell.Tab.0.bottom/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582735449273" />
+    <state width="1493" height="118" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1583615926707" />
+    <state width="1493" height="118" key="GridCell.Tab.0.center" timestamp="1583615926707">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1815" height="350" key="GridCell.Tab.0.center/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583515872199" />
+    <state width="1815" height="340" key="GridCell.Tab.0.center/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582735449273" />
+    <state width="1493" height="118" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1583615926707" />
+    <state width="1493" height="118" key="GridCell.Tab.0.left" timestamp="1583615926707">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1815" height="350" key="GridCell.Tab.0.left/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583515872199" />
+    <state width="1815" height="340" key="GridCell.Tab.0.left/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582735449273" />
+    <state width="1493" height="118" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1583615926707" />
+    <state width="1493" height="118" key="GridCell.Tab.0.right" timestamp="1583615926707">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1815" height="350" key="GridCell.Tab.0.right/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583515872199" />
+    <state width="1815" height="340" key="GridCell.Tab.0.right/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582735449273" />
+    <state width="1493" height="118" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1583615926707" />
+    <state width="1493" height="118" key="GridCell.Tab.1.bottom" timestamp="1583615930171">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="118" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1583615930171" />
+    <state width="1493" height="118" key="GridCell.Tab.1.center" timestamp="1583615930171">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="118" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1583615930171" />
+    <state width="1493" height="118" key="GridCell.Tab.1.left" timestamp="1583615930171">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="118" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1583615930171" />
+    <state width="1493" height="118" key="GridCell.Tab.1.right" timestamp="1583615930171">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="118" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1583615930171" />
+    <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1582223512556">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.834@0.0.1536.834" timestamp="1582223512556" />
+    <state x="2236" y="334" key="IDE.errors.dialog" timestamp="1581962767012">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2236" y="334" key="IDE.errors.dialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1581962767012" />
+    <state x="481" y="133" key="MultipleFileMergeDialog" timestamp="1582922146270">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="481" y="133" key="MultipleFileMergeDialog/0.0.1536.834@0.0.1536.834" timestamp="1582922146270" />
+    <state x="656" y="298" width="756" height="603" key="NewModule_or_Project.wizard" timestamp="1582736725916">
+      <screen x="62" y="0" width="1858" height="1200" />
+    </state>
+    <state x="656" y="298" width="756" height="603" key="NewModule_or_Project.wizard/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582736725916" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1582978558059">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="397" y="0" key="SettingsEditor/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582731890070" />
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1582978558059" />
+    <state x="2419" y="216" key="Vcs.Push.Dialog.v2" timestamp="1583515856604">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2419" y="216" key="Vcs.Push.Dialog.v2/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583515856604" />
+    <state x="499" y="216" key="Vcs.Push.Dialog.v2/-3790.0.1486.864/62.0.1858.1200/-1920.0.1920.1050@62.0.1858.1200" timestamp="1582734492299" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1583081368877" />
+    <state x="523" y="171" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1581890774132">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="523" y="171" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.1536.834@0.0.1536.834" timestamp="1581890774132" />
+    <state x="478" y="59" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1581888906017">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="478" y="59" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.834@0.0.1536.834" timestamp="1581888906017" />
+    <state x="631" y="155" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1582400914331">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="631" y="155" key="com.intellij.database.view.ui.DbObjectDialog/0.0.1536.834@0.0.1536.834" timestamp="1582400914331" />
+    <state x="405" y="146" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1582229383725">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="405" y="146" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1536.834@0.0.1536.834" timestamp="1582229383725" />
+    <state x="578" y="334" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582922495288">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="578" y="334" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1582922495288" />
+    <state x="2999" y="273" key="extract.method.dialog" timestamp="1583497887461">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2999" y="273" key="extract.method.dialog/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583497887461" />
+    <state x="841" y="190" key="extract.method.dialog/0.0.1536.834@0.0.1536.834" timestamp="1582484436276" />
+    <state x="459" y="130" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582915002998">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="459" y="130" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.834@0.0.1536.834" timestamp="1582915002998" />
+    <state x="455" y="208" key="git4idea.merge.GitPullDialog" timestamp="1582914600777">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="455" y="208" key="git4idea.merge.GitPullDialog/0.0.1536.834@0.0.1536.834" timestamp="1582914600777" />
+    <state x="2574" y="265" width="672" height="678" key="search.everywhere.popup" timestamp="1583430067775">
+      <screen x="1982" y="0" width="1858" height="1200" />
+    </state>
+    <state x="2574" y="265" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.840/1982.0.1858.1200/0.0.1920.1050@1982.0.1858.1200" timestamp="1583430067775" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/db/DatabaseHandler.java</url>
+          <line>28</line>
+          <properties field="URL" class="db.DatabaseHandler" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/db/DatabaseHandler.java</url>
+          <line>33</line>
+          <properties field="USER" class="db.DatabaseHandler" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/db/DatabaseHandler.java</url>
+          <line>34</line>
+          <properties field="PASS" class="db.DatabaseHandler" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/db/DatabaseHandler.java</url>
+          <line>37</line>
+          <properties class="db.DatabaseHandler" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/db/DatabaseInfoCSVParser.java</url>
+          <line>10</line>
+          <properties class="db.DatabaseInfoCSVParser" method="parseFrom">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="databaseInfo" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
+  </component>
+</project>

@@ -1,82 +1,39 @@
 package models;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.sql.Time;
 import java.sql.Timestamp;
 
+@Data
 public class Timetable {
-    int id;
-    String weekday;
+    Long id;
+    Weekday weekday;
     Time arrivalTime;
-    int locationId;
-    int busId;
+    Location location;
+    Bus bus;
     Timestamp createdOn;
 
-    public Timetable(String weekday, Time arrivalTime, int locationId, int busId) {
-        this.weekday = weekday;
-        this.arrivalTime = arrivalTime;
-        this.locationId = locationId;
-        this.busId = busId;
+    @ToString
+    public enum Weekday {
+        MONDAY("Monday"),
+        TUESDAY("Tuesday"),
+        WEDNESDAY("Wednesday"),
+        THURSDAY("Thursday"),
+        FRIDAY("Friday"),
+        SATURDAY("Saturday"),
+        SUNDAY("Sunday");
+
+        String name;
+
+        Weekday(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
-    public Timetable() {}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getWeekday() {
-        return weekday;
-    }
-
-    public void setWeekday(String weekday) {
-        this.weekday = weekday;
-    }
-
-    public Time getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public void setArrivalTime(Time arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
-    public int getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
-    }
-
-    public int getBusId() {
-        return busId;
-    }
-
-    public void setBusId(int busId) {
-        this.busId = busId;
-    }
-
-    public Timestamp getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Timestamp createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    @Override
-    public String toString() {
-        return "Timetable{" +
-                "id=" + id +
-                ", weekday='" + weekday + '\'' +
-                ", arrivalTime=" + arrivalTime +
-                ", locationId=" + locationId +
-                ", busId=" + busId +
-                ", createdOn=" + createdOn +
-                '}';
-    }
 }

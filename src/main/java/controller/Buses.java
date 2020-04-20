@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Bus;
+import util.Validator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,22 +34,19 @@ public class Buses extends Models<Bus> implements Initializable {
     @FXML
     private DatePicker purchasedOnDatePicker;
     @FXML
-    private ToggleGroup find;
-    @FXML
     private RadioButton findByDriverRadioButton;
     @FXML
     private RadioButton findByFuelRadioButton;
     @FXML
     private RadioButton findByPurchaseOnRadioButton;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         setUpTableColumns();
         //load data
-        tableView.setItems(bus.getAll());
-        driverChoiceBox.getItems().addAll(driver.getAllNames());
+        tableView.setItems(busService.getAll());
+        driverChoiceBox.getItems().addAll(driverService.getAllNames());
     }
 
     public void setUpTableColumns() {
@@ -60,33 +58,11 @@ public class Buses extends Models<Bus> implements Initializable {
         purchasedOnColumn.setCellValueFactory(new PropertyValueFactory<>("purchasedOn"));
     }
 
-
-    public void updateButtonPushed() {
-        Bus changeableBus = getObjectFromSelectedTableRow();
-
-        if (!busNumberTextField.getText().isEmpty())
-            changeableBus.setBusNumber(busNumberTextField.getText());
-        if (driver.findDriverByFullName(driverChoiceBox.getValue()) != null)
-            changeableBus.setDriver(driver.findDriverByFullName(driverChoiceBox.getValue()));
-        if (!fuelTextField.getText().isEmpty())
-            changeableBus.setFuel(Float.parseFloat(fuelTextField.getText()));
-        if (purchasedOnDatePicker.getValue() != null)
-            changeableBus.setPurchasedOn(parser.convertToDateViaSqlDate(purchasedOnDatePicker.getValue()));
-
-        System.out.println(this.bus.update(changeableBus));
-
-        tableView.setItems(this.bus.getAll());
-    }
-
-    public Bus getObjectFromSelectedTableRow() {
-        return tableView.getSelectionModel().getSelectedItem();
-    }
-
     public Bus getObjectFromFields() {
 
         Bus bus = new Bus();
         bus.setBusNumber(busNumberTextField.getText());
-        bus.setDriver(driver.findDriverByFullName(driverChoiceBox.getValue()));
+        bus.setDriver(driverService.findDriverByFullName(driverChoiceBox.getValue()));
         bus.setFuel(Float.parseFloat(fuelTextField.getText()));
         bus.setPurchasedOn(parser.convertToDateViaSqlDate(purchasedOnDatePicker.getValue()));
         return bus;
@@ -94,23 +70,40 @@ public class Buses extends Models<Bus> implements Initializable {
 
     @Override
     public void showAllButtonPushed(ActionEvent event) {
-        tableView.setItems(bus.getAll());
+        tableView.setItems(busService.getAll());
     }
 
     public void addButtonPushed() {
 
-        //Get all the items from the table as a list, then add the new bus to the list
-        System.out.println(this.bus.save(getObjectFromFields()));
-
-        tableView.getItems().add(getObjectFromFields());
+        if (checkAllUserInput()) {
+            boolean result = busService.save(getObjectFromFields());
+            if (result) {
+                tableView.setItems(busService.getAll());
+            } else {
+                System.out.println("was not not saved to a database");
+            }
+        }
     }
 
-    public void detailsButtonPushed(ActionEvent event) throws IOException {
+    public void updateButtonPushed() {
 
-        //access the controller and call a method
-        BusDetails controller = changeScreen(event, "/busView.fxml").getController();
-        controller.initData(tableView.getSelectionModel().getSelectedItem());
+        Bus changeableBus = getObjectFromSelectedTableRow();
+
+        if (!busNumberTextField.getText().isEmpty())
+            changeableBus.setBusNumber(busNumberTextField.getText());
+        if (driverService.findDriverByFullName(driverChoiceBox.getValue()) != null)
+            changeableBus.setDriver(driverService.findDriverByFullName(driverChoiceBox.getValue()));
+        if (!fuelTextField.getText().isEmpty())
+            changeableBus.setFuel(Float.parseFloat(fuelTextField.getText()));
+        if (purchasedOnDatePicker.getValue() != null)
+            changeableBus.setPurchasedOn(parser.convertToDateViaSqlDate(purchasedOnDatePicker.getValue()));
+
+        System.out.println(busService.update(changeableBus));
+
+        tableView.setItems(busService.getAll());
+        tableView.refresh();
     }
+
 
     public void deleteButtonPushed() {
 
@@ -123,18 +116,40 @@ public class Buses extends Models<Bus> implements Initializable {
         //loop over the selected rows and remove the Bus objects from the table
         for (Bus bus : selectedRows) {
             allBuses.remove(bus);
-            System.out.println(this.bus.delete(bus));
+            System.out.println(busService.delete(bus));
         }
     }
 
     @Override
     public void findButtonPushed() {
 
-        if (findByDriverRadioButton.isSelected())
-            tableView.setItems(bus.findBusByDriverName(driverChoiceBox.getValue()));
-        if (findByFuelRadioButton.isSelected())
-            tableView.setItems(bus.findBusByFuel(Float.parseFloat(fuelTextField.getText())));
-        if (findByPurchaseOnRadioButton.isSelected())
-            tableView.setItems(bus.findBusByPurchasedOn(parser.convertToDateViaSqlDate(purchasedOnDatePicker.getValue())));
+        if (findByDriverRadioButton.isSelected() &&
+                Validator.isChoiceBoxHasValue(driverChoiceBox, "Select driver"))
+            tableView.setItems(busService.findBusByDriverName(driverChoiceBox.getValue()));
+        if (findByFuelRadioButton.isSelected() &&
+                Validator.isTextFieldEmpty(fuelTextField, "Type fuel value") &&
+                Validator.stringMatcherValidation(fuelTextField.getText(), "[0-9]*['.']?[0-9]*",
+                        "Make sure that number format is xx.xx"))
+            tableView.setItems(busService.findBusByFuel(Float.parseFloat(fuelTextField.getText())));
+        if (findByPurchaseOnRadioButton.isSelected() &&
+                Validator.isDatePickerNotEmpty(purchasedOnDatePicker, "Select Date"))
+            tableView.setItems(busService.findBusByPurchasedOn(
+                    parser.convertToDateViaSqlDate(purchasedOnDatePicker.getValue())));
+    }
+
+    public void detailsButtonPushed(ActionEvent event) throws IOException {
+
+        //access the controller and call a method
+        BusDetails controller = changeScreen(event, "/busView.fxml").getController();
+        controller.initData(getObjectFromSelectedTableRow());
+    }
+
+    private boolean checkAllUserInput() {
+        return Validator.isChoiceBoxHasValue(driverChoiceBox, "Select driver") &&
+                Validator.isTextFieldEmpty(fuelTextField, "Type fuel value") &&
+                Validator.stringMatcherValidation(fuelTextField.getText(), "[0-9]*['.']?[0-9]*",
+                        "Make sure that number format is xx.xx") &&
+                Validator.isDatePickerNotEmpty(purchasedOnDatePicker, "Select Date") &&
+                Validator.isTextFieldEmpty(busNumberTextField, "Type bus number");
     }
 }

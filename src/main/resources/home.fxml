@@ -16,22 +16,22 @@
                         <Font name="Britannic Bold" size="24.0" />
                     </font>
                 </Button>
-            <Button fx:id="driversButton" layoutX="194.0" layoutY="58.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Drivers" textFill="WHITE">
+            <Button fx:id="driversButton" layoutX="194.0" layoutY="58.0" mnemonicParsing="false" onAction="#driversButtonPushed" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Drivers" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="passengersButton" layoutX="194.0" layoutY="110.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Passengers" textFill="WHITE">
+            <Button fx:id="passengersButton" layoutX="194.0" layoutY="110.0" mnemonicParsing="false" onAction="#passengersButtonPushed" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Passengers" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="timetableButton" layoutX="194.0" layoutY="160.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Timetable" textFill="WHITE">
+            <Button fx:id="timetableButton" layoutX="194.0" layoutY="160.0" mnemonicParsing="false" onAction="#timetableButtonPushed" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Timetable" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="developersButton" layoutX="194.0" layoutY="210.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Developers" textFill="WHITE">
+            <Button fx:id="developersButton" layoutX="194.0" layoutY="210.0" mnemonicParsing="false" onAction="#developersButtonPushed" prefHeight="26.0" prefWidth="289.0" style="-fx-background-color: #f39c63;" text="Developers" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="24.0" />
                </font>

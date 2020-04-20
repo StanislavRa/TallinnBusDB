@@ -13,16 +13,6 @@ import java.util.ResourceBundle;
 public class Home extends General implements Initializable {
 
     @FXML
-    private Button busesButton;
-    @FXML
-    private Button driversButton;
-    @FXML
-    private Button passengersButton;
-    @FXML
-    private Button timetableButton;
-    @FXML
-    private Button developersButton;
-    @FXML
     private Button exitButton;
 
     @Override
@@ -31,7 +21,30 @@ public class Home extends General implements Initializable {
 
     public void busesButtonPushed(ActionEvent event) throws IOException {
 
-        changeScreen(event, "/buses_new.fxml");
+        changeScreen(event, "/buses.fxml");
+    }
+
+    public void driversButtonPushed(ActionEvent event) throws IOException {
+
+        changeScreen(event, "/drivers.fxml");
+    }
+
+    public void passengersButtonPushed(ActionEvent event) throws IOException {
+
+        changeScreen(event, "/passengers.fxml");
+    }
+
+    public void timetableButtonPushed(ActionEvent event) throws IOException {
+
+        changeScreen(event, "/timetable.fxml");
+    }
+
+    public void developersButtonPushed(ActionEvent event) throws IOException {
+
+        Developers controller = changeScreen(event, "/developers.fxml").getController();
+        controller.setDeveloperNameLabel("Stanislav");
+        controller.setDeveloperSurnameLabel("Ratšinski");
+        controller.setDeveloperEmailLabel("s.ratsinski@hotmail.com");
     }
 
     public void exitButtonPushed() {

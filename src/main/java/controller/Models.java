@@ -4,8 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import service.Bus;
-import service.Driver;
+import service.*;
 
 import java.io.IOException;
 
@@ -22,12 +21,14 @@ public abstract class Models<T> extends General {
     @FXML
     protected Button detailsButton;
     @FXML
-    protected Button showAll;
-    @FXML
     protected Button findButton;
 
-    protected Bus bus = new Bus();
-    protected Driver driver = new Driver();
+    protected Bus busService = new Bus();
+    protected Driver driverService = new Driver();
+    protected Passenger passengerService = new Passenger();
+    protected Location locationService = new Location();
+    protected Timetable timetableService = new Timetable();
+    protected Service<T> service;
 
     public void userClickedOnTable() {
 
@@ -36,9 +37,11 @@ public abstract class Models<T> extends General {
         this.updateButton.setDisable(false);
     }
 
-    public abstract void setUpTableColumns();
+    public T getObjectFromSelectedTableRow() {
+        return tableView.getSelectionModel().getSelectedItem();
+    }
 
-    public abstract T getObjectFromSelectedTableRow();
+    public abstract void setUpTableColumns();
 
     public abstract T getObjectFromFields();
 

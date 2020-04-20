@@ -1,12 +1,17 @@
 package service;
 
 
+import db.DatabaseHandler;
 import javafx.collections.ObservableList;
+
+import java.sql.Connection;
 
 
 public interface Service<T> {
 
-    T get(int id);
+    Connection connection = DatabaseHandler.getInstance().getConnection();
+
+    T get(Long id);
 
     ObservableList<T> getAll();
 

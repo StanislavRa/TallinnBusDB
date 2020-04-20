@@ -1,14 +1,10 @@
 package domain;
 
-import db.DatabaseHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import service.Bus;
-
-import java.sql.Connection;
 
 public class Domain extends Application {
 

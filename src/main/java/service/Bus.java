@@ -1,22 +1,22 @@
 package service;
 
-import db.DatabaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Bus implements Service<models.Bus> {
 
-
     @Override
-    public models.Bus get(int id) {
-            Connection connection = DatabaseHandler.getInstance().getConnection();
+    public models.Bus get(Long id) {
+
         try {
 
             String sql = "SELECT * FROM buses where id = ? limit 1";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setLong(1, id);
 
             ResultSet resultSetBuses = ps.executeQuery();
 
@@ -28,7 +28,6 @@ public class Bus implements Service<models.Bus> {
 
             ps.close();
 
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -37,7 +36,6 @@ public class Bus implements Service<models.Bus> {
 
     @Override
     public ObservableList<models.Bus> getAll() {
-        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         ObservableList<models.Bus> buses = FXCollections.observableArrayList();
         System.out.println("List of all buses:");
@@ -64,8 +62,6 @@ public class Bus implements Service<models.Bus> {
     @Override
     public boolean save(models.Bus bus) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
-
         try {
 
             String sql = "INSERT buses (busNumber, driverId, fuel, purchasedOn) VALUES (?, ?, ?, ?)";
@@ -73,11 +69,12 @@ public class Bus implements Service<models.Bus> {
             PreparedStatement ps = connection.prepareStatement(sql);
 
             ps.setString(1, bus.getBusNumber());
-            ps.setInt(2, bus.getDriver().getId());
+            ps.setLong(2, bus.getDriver().getId());
             ps.setFloat(3, bus.getFuel());
             ps.setDate(4, new java.sql.Date(bus.getPurchasedOn().getTime()));
 
             int result = ps.executeUpdate();
+            System.out.println(bus.toString());
 
             ps.close();
 
@@ -92,8 +89,6 @@ public class Bus implements Service<models.Bus> {
     @Override
     public boolean update(models.Bus bus) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
-
         try {
             String sql = "UPDATE buses " +
                     "SET busNumber = ?, driverId = ?, fuel = ?, purchasedOn = ? " +
@@ -102,10 +97,10 @@ public class Bus implements Service<models.Bus> {
             PreparedStatement ps = connection.prepareStatement(sql);
 
             ps.setString(1, bus.getBusNumber());
-            ps.setInt(2, bus.getDriver().getId());
+            ps.setLong(2, bus.getDriver().getId());
             ps.setFloat(3, bus.getFuel());
             ps.setDate(4, new java.sql.Date(bus.getPurchasedOn().getTime()));
-            ps.setInt(5, bus.getId());
+            ps.setLong(5, bus.getId());
 
             int result = ps.executeUpdate();
 
@@ -122,13 +117,11 @@ public class Bus implements Service<models.Bus> {
     @Override
     public boolean delete(models.Bus bus) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
-
         try {
 
             String sql = "DELETE FROM buses WHERE id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, bus.getId());
+            ps.setLong(1, bus.getId());
             int result = ps.executeUpdate();
 
             ps.close();
@@ -142,8 +135,6 @@ public class Bus implements Service<models.Bus> {
     }
 
     public models.Bus findBusByNumber(String busNumber) {
-
-        Connection connection = DatabaseHandler.getInstance().getConnection();
 
         try {
 
@@ -169,7 +160,6 @@ public class Bus implements Service<models.Bus> {
 
     public ObservableList<models.Bus> findBusByDriverName(String driverFullName) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
         ObservableList<models.Bus> buses = FXCollections.observableArrayList();
 
         try {
@@ -197,7 +187,6 @@ public class Bus implements Service<models.Bus> {
 
     public ObservableList<models.Bus> findBusByFuel(float fuel) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
         ObservableList<models.Bus> buses = FXCollections.observableArrayList();
 
         try {
@@ -225,7 +214,6 @@ public class Bus implements Service<models.Bus> {
 
     public ObservableList<models.Bus> findBusByPurchasedOn(Date purchasedOn) {
 
-        Connection connection = DatabaseHandler.getInstance().getConnection();
         ObservableList<models.Bus> buses = FXCollections.observableArrayList();
 
         try {
@@ -252,10 +240,10 @@ public class Bus implements Service<models.Bus> {
     }
     models.Bus extractBusFromResultSet(ResultSet rs) throws SQLException {
 
-        models.Driver getDriver = new Driver().get(rs.getInt("driverId"));
+        models.Driver getDriver = new Driver().get(rs.getLong("driverId"));
 
         models.Bus bus = new models.Bus();
-        bus.setId(rs.getInt("id"));
+        bus.setId(rs.getLong("id"));
         bus.setBusNumber(rs.getString("busNumber"));
         bus.setDriver(getDriver);
         bus.setFuel(rs.getFloat("fuel"));
@@ -263,5 +251,29 @@ public class Bus implements Service<models.Bus> {
         bus.setPurchasedOn((rs.getDate("purchasedOn")));
 
         return bus;
+    }
+
+    public List<String> getAllNames() {
+
+        //Connection connection = DatabaseHandler_ol.getInstance().getConnection();
+
+        List<String> busNumbers = new ArrayList<>();
+        System.out.println("List of all bus numbers:");
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM buses");
+
+            while (resultSet.next()) {
+                String busNumber = resultSet.getString("busNumber");
+                busNumbers.add(busNumber);
+            }
+
+            statement.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return busNumbers;
     }
 }
